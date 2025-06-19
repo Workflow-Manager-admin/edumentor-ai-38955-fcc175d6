@@ -12,7 +12,7 @@ asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
 javascript modules 1.34 MiB
   modules by path ./node_modules/ 1.24 MiB 31 modules
-  modules by path ./src/ 83.5 KiB 20 modules
+  modules by path ./src/ 82.9 KiB 20 modules
   modules by path ./.ve/ 15.1 KiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
@@ -20,14 +20,53 @@ javascript modules 1.34 MiB
 json modules 24 bytes
   ./src/data/neet_syllabus.json 12 bytes [built] [code generated]
   ./src/data/jee_syllabus.json 12 bytes [built] [code generated]
-webpack 5.99.9 compiled successfully in 1529 ms
+webpack 5.99.9 compiled successfully in 1473 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.5 MiB
+  asset bundle.js 1.49 MiB [emitted] (name: main)
+  asset main.c0946072824ed77d6eab.hot-update.js 6.93 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.c0946072824ed77d6eab.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.c0946072824ed77d6eab.hot-update.js 6.93 KiB
+cached modules 1.28 MiB [cached] 49 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 49.9 KiB
+  ./src/App.js 4.03 KiB [code generated]
+  ./src/features/index.js 1000 bytes [code generated]
+  ./src/features/SyllabusContext.js 4.25 KiB [built] [code generated]
+  ./src/features/SyllabusAutoImporter.js 8.13 KiB [code generated]
+  ./src/features/ProgressTracking.js 3.62 KiB [code generated]
+  ./src/features/SyllabusManager.js 3.56 KiB [code generated]
+  ./src/features/ProgressMap.js 3.62 KiB [code generated]
+  ./src/features/ExamSelectionModal.js 3.73 KiB [code generated]
+  ./src/features/StudyPlanner.js 18 KiB [code generated]
+webpack 5.99.9 compiled successfully in 104 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.52 MiB
+  asset bundle.js 1.49 MiB [emitted] (name: main)
+  asset main.7e2582c1fb7effd67476.hot-update.js 23.6 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.7e2582c1fb7effd67476.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.52 MiB = bundle.js 1.49 MiB main.7e2582c1fb7effd67476.hot-update.js 23.6 KiB
+cached modules 1.32 MiB [cached] 57 modules
+runtime modules 27.5 KiB 14 modules
+./src/features/StudyPlanner.js 17.8 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 156 ms
 assets by status 1.98 KiB [cached] 1 asset
 assets by path *.js 1.51 MiB
-  asset bundle.js 1.5 MiB [emitted] (name: main)
-  asset main.20ca1c4b9bada57b330d.hot-update.js 12.1 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.20ca1c4b9bada57b330d.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.5 MiB main.20ca1c4b9bada57b330d.hot-update.js 12.1 KiB
-cached modules 1.33 MiB [cached] 57 modules
+  asset bundle.js 1.49 MiB [emitted] (name: main)
+  asset main.f2d4d4bf11bc5074a74f.hot-update.js 22.7 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.f2d4d4bf11bc5074a74f.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.f2d4d4bf11bc5074a74f.hot-update.js 22.7 KiB
+cached modules 1.32 MiB [cached] 57 modules
 runtime modules 27.5 KiB 14 modules
-./src/features/SyllabusAutoImporter.js 8.13 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 114 ms
+./src/features/StudyPlanner.js 17.1 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 95 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.51 MiB
+  asset bundle.js 1.49 MiB [emitted] (name: main)
+  asset main.437e8a9a34b4e3909114.hot-update.js 20.7 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.437e8a9a34b4e3909114.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.437e8a9a34b4e3909114.hot-update.js 20.7 KiB
+cached modules 1.32 MiB [cached] 57 modules
+runtime modules 27.5 KiB 14 modules
+./src/features/StudyPlanner.js 15.5 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 93 ms

@@ -3,52 +3,19 @@ import { UserProgressContext } from "./UserProgressContext";
 import neetSyllabus from "../data/neet_syllabus.json";
 import jeeSyllabus from "../data/jee_syllabus.json";
 
-/**
- * PUBLIC_INTERFACE
- * Synchronously returns static syllabus data for NEET or JEE.
- *
- * @param {string} exam - The selected exam name (e.g. "NEET", "JEE").
- * @returns {Array} - Array of {subject, topics: [{topic, subtopics}]} loaded directly from static import.
- * @throws Error if unsupported exam is selected.
- *
- * This never fetches data from web or API and always returns instantly.
- **/
-export function fetchSyllabusFromWeb(exam) {
-  if (!exam) throw new Error("No exam selected.");
-  const normalized = String(exam).toUpperCase();
-  if (normalized === "NEET") {
-    if (!Array.isArray(neetSyllabus)) throw new Error("Malformed NEET syllabus data.");
-    return neetSyllabus;
-  } else if (normalized === "JEE") {
-    if (!Array.isArray(jeeSyllabus)) throw new Error("Malformed JEE syllabus data.");
-    return jeeSyllabus;
-  } else {
-    throw new Error("Official syllabus only bundled for NEET and JEE.");
-  }
-}
+// PUBLIC_INTERFACE
+// Context to hold user's syllabus (static, local-only) and methods.
+export const SyllabusContext = createContext();
 
-// Utility: Generate unique IDs for imported/created syllabus entries
+// Utility: Generate unique IDs for manual additions.
 let __id_counter = 1;
 function uniqueId() {
   return "__s" + (__id_counter++);
 }
 
-/**
- * PUBLIC_INTERFACE
- * Context to store the user's syllabus (static, exam-dependent) and provide progress manipulation methods.
- *
- * When user selects NEET or JEE, the syllabus is imported synchronously from static JSON (via import), and appears immediately in UI.
- * Manual and file-import (custom) still supported.
- */
-export const SyllabusContext = createContext();
-
-/**
- * PUBLIC_INTERFACE
- * SyllabusProvider: makes syllabus and update functions available to descendants.
- *
- * - Syllabus is imported via context-native logic, using instant static bundle for NEET/JEE after exam select.
- * - UI consuming this context will always see the syllabus immediately for NEET/JEE after selection.
- */
+// PUBLIC_INTERFACE
+// SyllabusProvider makes syllabus and updater methods available to descendants.
+// Syllabus is instantly imported from static NEET/JEE JSON based on exam selection only.
 export function SyllabusProvider({ children }) {
   const [syllabus, setSyllabus] = useState(() => {
     try {
@@ -59,10 +26,10 @@ export function SyllabusProvider({ children }) {
     }
   });
 
-  // Bring in progress context for aggregate stats
+  // Bring in progress context for aggregate stats (safe fallback to undefined).
   const { updateSyllabusStats } = useContext(UserProgressContext ?? {});
 
-  // Helper to flatten for stats
+  // Helper: flatten tree for stats
   function flattenSyllabus(items) {
     let arr = [];
     for (const t of items) {
@@ -74,7 +41,7 @@ export function SyllabusProvider({ children }) {
     return arr;
   }
 
-  // Persist syllabus and update progress stats
+  // Keep syllabus in localStorage & update stats
   useEffect(() => {
     window.localStorage.setItem("_mapmyprep_syllabus_v1", JSON.stringify(syllabus));
     if (updateSyllabusStats) {
@@ -85,9 +52,7 @@ export function SyllabusProvider({ children }) {
     }
   }, [syllabus, updateSyllabusStats]);
 
-  // --- Public syllabus context API ---
-
-  // Add a (root) topic (Manual add, NOT part of automated study planner)
+  // Public context methods (with all fetch/web/api/loader logic removed)
   function addTopic(label) {
     setSyllabus((curr) => [
       ...curr,
@@ -95,7 +60,6 @@ export function SyllabusProvider({ children }) {
     ]);
   }
 
-  // Add a subtopic to a (topic or parent), given parent id
   function addSubtopic(parentId, sublabel) {
     setSyllabus((curr) => deepUpdate(curr, parentId, (topic) => {
       if (!topic.children) topic.children = [];
@@ -104,12 +68,10 @@ export function SyllabusProvider({ children }) {
     }));
   }
 
-  // Mark any topic or subtopic as completed/not-completed
   function updateProgress(topicId) {
     setSyllabus((curr) =>
       deepUpdate(curr, topicId, (topic) => {
         topic.completed = !topic.completed;
-        // Propagate completion to children if any
         if (topic.children && topic.children.length > 0) {
           topic.children = markAllChildren(topic.children, topic.completed);
         }
@@ -118,7 +80,6 @@ export function SyllabusProvider({ children }) {
     );
   }
 
-  // Recursively deep-update syllabus for a node id and updater function
   function deepUpdate(list, searchId, updater) {
     return list.map((item) => {
       if (item.id === searchId) {
@@ -133,8 +94,6 @@ export function SyllabusProvider({ children }) {
       return item;
     });
   }
-
-  // Recursively mark all children (for propagate-completion)
   function markAllChildren(children, completedValue) {
     return children.map((c) => ({
       ...c,
@@ -143,18 +102,17 @@ export function SyllabusProvider({ children }) {
     }));
   }
 
-  // Remove syllabus and clear localStorage
   function resetSyllabus() {
     setSyllabus([]);
     window.localStorage.removeItem("_mapmyprep_syllabus_v1");
   }
 
-  // Imports syllabus (from static, directly, or manual upload)
   function importSyllabus(json) {
     setSyllabus(Array.isArray(json) ? json : []);
   }
 
-  // Synchronously set syllabus based on selected exam
+  // PUBLIC_INTERFACE
+  // Instantly set syllabus to static NEET or JEE JSON based on selection.
   function importSyllabusForExam(exam) {
     if (!exam) return;
     const normalized = String(exam).toUpperCase();

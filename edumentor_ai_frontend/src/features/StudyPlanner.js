@@ -4,12 +4,8 @@ import { ExamContext } from "./ExamContext";
 
 /**
  * PUBLIC_INTERFACE
- * StudyPlanner: Generates study plan ONLY from a live web-fetched syllabus.
- *
- * - Never loads static, hardcoded, or demo data.
- * - Blocks all planning and disables plan features if syllabus is not available or from fetch fails.
- * - Shows clear loading or error UI for syllabus fetch/failure.
- * - All logic depends solely on the real, imported syllabus from web.
+ * StudyPlanner: Generates study plan from the currently loaded syllabus (instant local import or user-provided).
+ * All fetch, loader, or error UI logic for API/web fetching has been removed—planning is enabled as soon as syllabus is present.
  */
 
 function defaultSuggestedHours(depth = 0) {
@@ -102,27 +98,10 @@ export function StudyPlanner({ planDays = 90 }) {
   const [expanded, setExpanded] = useState({});
   const [isEditing, setIsEditing] = useState(false);
 
-  // New: track loading/error/empty state for web-fetched syllabus
-  const [syllabusStatus, setSyllabusStatus] = useState("idle"); // "loading", "error", "ready", "empty"
-  const [syllabusError, setSyllabusError] = useState("");
+  // No loader/error/empty status UI (render plan as soon as syllabus present)
 
   useEffect(() => {
-    // Simulate syllabus state check/status (now: syllabus only from live fetch/import)
-    if (!Array.isArray(syllabus)) {
-      setSyllabusStatus("error");
-      setSyllabusError("Internal error with syllabus format.");
-    } else if (syllabus.length > 0) {
-      setSyllabusStatus("ready");
-      setSyllabusError("");
-    } else {
-      setSyllabusStatus("empty");
-      setSyllabusError("");
-    }
-  }, [syllabus]);
-
-  // Do not auto-populate plan if syllabus empty or absent (must live fetch/import).
-  useEffect(() => {
-    // If syllabus is provided and valid, compute/generate plan, else block and clear plan.
+    // If syllabus is present, always compute or load plan from localStorage
     if (Array.isArray(syllabus) && syllabus.length > 0) {
       const key = getStorageKey(exam);
       let saved = null;
@@ -138,7 +117,6 @@ export function StudyPlanner({ planDays = 90 }) {
         window.localStorage.setItem(key, JSON.stringify(initial));
       }
     } else {
-      // Absolutely block plan if no syllabus - don't allow fallback
       setPlan([]);
     }
   }, [syllabus, exam, planDays]);
@@ -320,34 +298,17 @@ export function StudyPlanner({ planDays = 90 }) {
     <div className="card" style={{ maxWidth: 820, marginBottom: 24 }}>
       <h2 className="card-title">Study Planner & Syllabus Breakdown</h2>
       <div style={{ color: "var(--muted)", marginBottom: 12 }}>
-        Syllabus must be fetched from the official source. All planner features are disabled unless a live syllabus is available.
+        Plan your studies from your currently loaded syllabus. (Planner features unlock when a syllabus has been loaded or imported.)
       </div>
-      {syllabusStatus === "loading" && (
-        <div style={{ color: "var(--secondary)", fontWeight: 500, marginBottom: 10 }}>
-          Loading syllabus data from the web&hellip;
-        </div>
-      )}
-      {syllabusStatus === "empty" && (
+      {(!Array.isArray(syllabus) || syllabus.length === 0) && (
         <div style={{ color: "#FF3742", fontWeight: 500 }}>
           <span>
             <b>No syllabus loaded.</b> <br />
-            Please use the "Auto Fetch Official Syllabus" feature or import the latest syllabus for your exam to generate a plan.
+            Please select an exam and import a syllabus to generate a plan.
           </span>
         </div>
       )}
-      {syllabusStatus === "error" && (
-        <div style={{ color: "#FF3742", fontWeight: 500 }}>
-          <b>Failed to fetch the syllabus:</b> {syllabusError || "Unknown error"}.
-          <br />
-          Please try re-importing your syllabus.
-        </div>
-      )}
-      {syllabusStatus === "ready" && plan.length === 0 && (
-        <div style={{ color: "var(--muted)" }}>
-          Syllabus imported, but no plan generated. Try reloading or refetching the syllabus.
-        </div>
-      )}
-      {syllabusStatus === "ready" && plan.length > 0 && (
+      {(Array.isArray(syllabus) && syllabus.length > 0 && plan.length > 0) && (
         <>
           <div style={{ marginBottom: 10 }}>
             <button
@@ -362,11 +323,6 @@ export function StudyPlanner({ planDays = 90 }) {
             {plan.map((entry, idx) => renderPlanEntry(entry, idx, isEditing))}
           </div>
         </>
-      )}
-      {(syllabusStatus !== "ready") && (
-        <div style={{ color: "#aaa", marginTop: 25, fontSize: "1.04em" }}>
-          <b>Planner actions (edit, schedule, etc.) will unlock only after a valid, live syllabus is loaded for your exam.</b>
-        </div>
       )}
       <div style={{ marginTop: 12, color: "var(--muted)", fontSize:"0.96em" }}>
         <b>Note:</b> Editing the study plan affects only your local saved planner and does not change the original syllabus.
