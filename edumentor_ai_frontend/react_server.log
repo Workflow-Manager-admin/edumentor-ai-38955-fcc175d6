@@ -12,8 +12,8 @@ asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
 cacheable modules 1.33 MiB
   modules by path ./node_modules/ 1.24 MiB 31 modules
-  modules by path ./src/ 81.2 KiB
-    modules by path ./src/features/*.js 63.9 KiB 13 modules
+  modules by path ./src/ 81.8 KiB
+    modules by path ./src/features/*.js 64.5 KiB 13 modules
     modules by path ./src/*.css 9.07 KiB 4 modules
     modules by path ./src/*.js 4.55 KiB 2 modules
     ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
@@ -21,54 +21,14 @@ cacheable modules 1.33 MiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1689 ms
+webpack 5.99.9 compiled successfully in 1638 ms
 assets by status 1.98 KiB [cached] 1 asset
 assets by path *.js 1.5 MiB
   asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.5a8af0a1b23dea02e617.hot-update.js 8.7 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.5a8af0a1b23dea02e617.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.5a8af0a1b23dea02e617.hot-update.js 8.7 KiB
+  asset main.a6ecb1eac0946c4861f2.hot-update.js 6.53 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.a6ecb1eac0946c4861f2.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.a6ecb1eac0946c4861f2.hot-update.js 6.53 KiB
 cached modules 1.33 MiB [cached] 55 modules
 runtime modules 27.5 KiB 14 modules
-./src/features/SyllabusContext.js 6.26 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 113 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.51 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.ec4318edd8bf1382714c.hot-update.js 22.1 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.ec4318edd8bf1382714c.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.ec4318edd8bf1382714c.hot-update.js 22.1 KiB
-cached modules 1.32 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./src/features/StudyPlanner.js 16.7 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 139 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.51 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.dd53a02f9bd475f4229a.hot-update.js 22.3 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.dd53a02f9bd475f4229a.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.dd53a02f9bd475f4229a.hot-update.js 22.3 KiB
-cached modules 1.32 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./src/features/StudyPlanner.js 16.9 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 96 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.51 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.7b9611405ab905008d1b.hot-update.js 22.4 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.7b9611405ab905008d1b.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.7b9611405ab905008d1b.hot-update.js 22.4 KiB
-cached modules 1.32 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./src/features/StudyPlanner.js 17 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 87 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.52 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.674b1feb94f8880aadd9.hot-update.js 23.7 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.674b1feb94f8880aadd9.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.52 MiB = bundle.js 1.49 MiB main.674b1feb94f8880aadd9.hot-update.js 23.7 KiB
-cached modules 1.32 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./src/features/StudyPlanner.js 18 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 91 ms
+./src/features/ExamSelectionModal.js 3.86 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 118 ms

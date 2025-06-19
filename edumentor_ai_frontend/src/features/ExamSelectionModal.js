@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useExam } from "./ExamContext";
 
-// Exam options
+/**
+ * Only offer NEET and JEE as exam options.
+ */
 const EXAMS = [
   { value: "NEET", label: "NEET" },
-  { value: "JEE", label: "JEE" },
-  { value: "UPSC", label: "UPSC" },
-  { value: "SRMJEE", label: "SRMJEE" },
-  { value: "VITEEE", label: "VITEEE" },
-  { value: "Other", label: "Other" }
+  { value: "JEE", label: "JEE" }
 ];
 
 /**
