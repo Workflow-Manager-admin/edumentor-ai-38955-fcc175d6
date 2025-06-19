@@ -7,87 +7,115 @@
 <i> [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:3000/
 <i> [webpack-dev-server] Content not from webpack is served from './public' directory
 Injecting EditorRootWrapper import: ../.ve/EditorRootWrapper
-asset bundle.js 1.54 MiB [emitted] (name: main)
+asset bundle.js 1.49 MiB [emitted] (name: main)
 asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
-cacheable modules 1.36 MiB
-  modules by path ./src/ 104 KiB
-    modules by path ./src/features/*.js 83.6 KiB 27 modules
-    modules by path ./src/*.css 9.07 KiB 4 modules
-    modules by path ./src/*.js 7.86 KiB 2 modules
-    ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
+cacheable modules 1.33 MiB
   modules by path ./node_modules/ 1.24 MiB 31 modules
+  modules by path ./src/ 73.7 KiB
+    modules by path ./src/features/*.js 56.1 KiB 18 modules
+    modules by path ./src/*.css 9.07 KiB 4 modules
+    modules by path ./src/*.js 4.94 KiB 2 modules
+    ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
   modules by path ./.ve/ 15.1 KiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1600 ms
+webpack 5.99.9 compiled successfully in 1518 ms
 assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.5 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.7d5d882ba5309694a945.hot-update.js 5.62 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.7d5d882ba5309694a945.hot-update.json 346 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.7d5d882ba5309694a945.hot-update.js 5.62 KiB
-cached modules 1.32 MiB [cached] 59 modules
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.44 MiB [emitted] (name: main)
+  asset main.a38b75b93b5764a868bc.hot-update.js 3.33 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.a38b75b93b5764a868bc.hot-update.json 430 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.44 MiB main.a38b75b93b5764a868bc.hot-update.js 3.33 KiB
+cached modules 1.29 MiB [cached] 48 modules
 runtime modules 27.5 KiB 14 modules
-javascript modules 8.17 KiB
-  ./src/App.js 7.35 KiB [code generated]
-  ./src/features/index.js 843 bytes [built] [code generated]
+javascript modules 5.01 KiB
+  ./src/App.js 4.43 KiB [code generated]
+  ./src/features/index.js 595 bytes [built] [code generated]
 
-WARNING in ./src/App.js 132:33-49
-export 'CareerVisualizer' (imported as 'CareerVisualizer') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 72:32-47
+export 'ProgressUpdates' (imported as 'ProgressUpdates') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 136:33-46
-export 'RewardsSystem' (imported as 'RewardsSystem') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 77:33-42
+export 'FocusMode' (imported as 'FocusMode') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 140:33-43
-export 'DailyRecap' (imported as 'DailyRecap') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 85:33-44
+export 'MoodTracker' (imported as 'MoodTracker') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 152:33-51
-export 'ManualStudyPlanner' (imported as 'ManualStudyPlanner') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 92:32-46
+export 'GoalManagement' (imported as 'GoalManagement') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 156:33-50
-export 'QuickRevisionPlan' (imported as 'QuickRevisionPlan') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 98:39-54
+export 'MentorSelection' (imported as 'MentorSelection') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 168:33-48
-export 'RulesBasedCoach' (imported as 'RulesBasedCoach') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 100:32-49
+export 'MentorInteraction' (imported as 'MentorInteraction') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 172:33-49
-export 'LocalLeaderboard' (imported as 'LocalLeaderboard') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 105:33-51
+export 'MotivationalNudges' (imported as 'MotivationalNudges') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 176:33-42
-export 'DemoBuddy' (imported as 'DemoBuddy') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 109:33-54
+export 'FeedbackEncouragement' (imported as 'FeedbackEncouragement') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-WARNING in ./src/App.js 180:33-49
-export 'StaticQnAChatbot' (imported as 'StaticQnAChatbot') was not found in './features' (possible exports: AnalyticsReports, FeedbackEncouragement, FocusMode, GoalManagement, GoalSetting, MentorInteraction, MentorSelection, MoodTracker, MotivationalNudges, ProgressMap, ProgressTracking, ProgressUpdates, RemindersNotifications, SyllabusContext, UserManagement)
+WARNING in ./src/App.js 113:33-55
+export 'RemindersNotifications' (imported as 'RemindersNotifications') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
  @ ./src/index.js 5:0-24 11:32-35
 
-webpack 5.99.9 compiled with 9 warnings in 121 ms
+WARNING in ./src/App.js 117:33-49
+export 'AnalyticsReports' (imported as 'AnalyticsReports') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
+ @ ./src/index.js 5:0-24 11:32-35
+
+WARNING in ./src/App.js 121:33-47
+export 'UserManagement' (imported as 'UserManagement') was not found in './features' (possible exports: GoalSetting, ProgressMap, ProgressTracking, SyllabusContext, SyllabusManager, UserProgressContext, UserProgressProvider)
+ @ ./src/index.js 5:0-24 11:32-35
+
+webpack 5.99.9 compiled with 11 warnings in 49 ms
 assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.51 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.1a392230f97f196c51b9.hot-update.js 12.5 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.1a392230f97f196c51b9.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.49 MiB main.1a392230f97f196c51b9.hot-update.js 12.5 KiB
-cached modules 1.32 MiB [cached] 60 modules
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.44 MiB [emitted] (name: main)
+  asset main.8c8536366188b98111b1.hot-update.js 7.89 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.8c8536366188b98111b1.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.44 MiB main.8c8536366188b98111b1.hot-update.js 7.89 KiB
+cached modules 1.29 MiB [cached] 49 modules
 runtime modules 27.5 KiB 14 modules
-./src/App.js 7.18 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 90 ms
+./src/App.js 4.1 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 44 ms
 assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.5 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.377a87d644c9553a7645.hot-update.js 8.93 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.377a87d644c9553a7645.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.377a87d644c9553a7645.hot-update.js 8.93 KiB
-cached modules 1.32 MiB [cached] 60 modules
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.44 MiB [emitted] (name: main)
+  asset main.98b8da85c929aefcd4ce.hot-update.js 7.27 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.98b8da85c929aefcd4ce.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.44 MiB main.98b8da85c929aefcd4ce.hot-update.js 7.27 KiB
+cached modules 1.29 MiB [cached] 49 modules
 runtime modules 27.5 KiB 14 modules
-./src/App.js 4.43 KiB [built] [code generated]
+./src/App.js 3.57 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 46 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.edab0bd6f0612d0b9394.hot-update.js 4.59 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.edab0bd6f0612d0b9394.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.edab0bd6f0612d0b9394.hot-update.js 4.59 KiB
+cached modules 1.29 MiB [cached] 49 modules
+runtime modules 27.5 KiB 14 modules
+./src/App.js 1.88 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 40 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.433160994a6e2812ffbd.hot-update.js 4.82 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.433160994a6e2812ffbd.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.433160994a6e2812ffbd.hot-update.js 4.82 KiB
+cached modules 1.29 MiB [cached] 49 modules
+runtime modules 27.5 KiB 14 modules
+./src/App.js 1.94 KiB [built] [code generated]
 webpack 5.99.9 compiled successfully in 53 ms
