@@ -4,8 +4,13 @@ import { ExamContext } from "./ExamContext";
 
 /**
  * PUBLIC_INTERFACE
- * StudyPlanner: Display fetched syllabus in structured, expandable format.
- * Auto-generates and edits a study plan with persistence.
+ * StudyPlanner: Allocates syllabus across available prep period (start-exam date)
+ * Generates an editable, autosaving plan (list, Gantt, or calendar style).
+ *
+ * - Takes syllabus (after fetched/imported), startDate, and examDate as input.
+ * - Auto-allocates each topic/subtopic across even intervals or weighted priority.
+ * - Displays as list-style schedule (expandable), supports editing order, hours, dates.
+ * - Autosaves plan to localStorage.
  */
 
 function defaultSuggestedHours(depth = 0) {
