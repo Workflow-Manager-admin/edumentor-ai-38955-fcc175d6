@@ -12,33 +12,13 @@ asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
 cacheable modules 1.34 MiB
   modules by path ./node_modules/ 1.24 MiB 31 modules
-  modules by path ./src/ 84.3 KiB
+  modules by path ./src/ 86.6 KiB
     modules by path ./src/features/*.js 67 KiB 13 modules
-    modules by path ./src/*.css 9.07 KiB 4 modules
+    modules by path ./src/*.css 11.4 KiB 4 modules
     modules by path ./src/*.js 4.54 KiB 2 modules
     ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
   modules by path ./.ve/ 15.1 KiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1542 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.5 MiB
-  asset bundle.js 1.5 MiB [emitted] (name: main)
-  asset main.3e03b54e41cd690a4d71.hot-update.js 6.32 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.3e03b54e41cd690a4d71.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.5 MiB = bundle.js 1.5 MiB main.3e03b54e41cd690a4d71.hot-update.js 6.32 KiB
-cached modules 1.33 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./node_modules/css-loader/dist/cjs.js!./src/dashboard.css 3.75 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 44 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.51 MiB
-  asset bundle.js 1.5 MiB [emitted] (name: main)
-  asset main.4072d69f8003d04db029.hot-update.js 8.72 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.4072d69f8003d04db029.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.51 MiB = bundle.js 1.5 MiB main.4072d69f8003d04db029.hot-update.js 8.72 KiB
-cached modules 1.33 MiB [cached] 55 modules
-runtime modules 27.5 KiB 14 modules
-./node_modules/css-loader/dist/cjs.js!./src/dashboard.css 6.08 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 51 ms
+webpack 5.99.9 compiled successfully in 1553 ms
