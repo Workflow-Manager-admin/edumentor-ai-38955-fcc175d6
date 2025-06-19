@@ -9,3 +9,4 @@ export { UserProgressProvider } from "./UserProgressContext";
 export { ProgressMap } from "./ProgressMap";
 export { ExamProvider, useExam } from "./ExamContext";
 export { default as ExamSelectionModal } from "./ExamSelectionModal";
+export { default as StudyPlanner } from "./StudyPlanner";

@@ -10,6 +10,7 @@ import {
   ExamProvider,
   useExam,
   ExamSelectionModal,
+  StudyPlanner,
 } from "./features";
 import { SyllabusProvider } from "./features/SyllabusContext";
 import "./dashboard.css";
@@ -63,6 +64,7 @@ function App() {
               onSelect={setSelected}
             >
               <SyllabusManager />
+              <StudyPlanner />
               <div>
                 {renderPage()}
               </div>
