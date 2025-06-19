@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useExam } from "./ExamContext";
 import { fetchSyllabusFromWeb } from "./SyllabusContext";
 
@@ -17,34 +17,61 @@ export default function ExamSelectionModal() {
   const [selected, setSelected] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // similar to loading, but triggers rerender if needed
   const [syllabusFetched, setSyllabusFetched] = useState(false);
+  // Used to trigger retry fetch after error
+  const retryFetch = useRef(null);
 
-  // Triggers auto-fetch when user chooses NEET/JEE (as soon as selection is made and "Continue" is pressed)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selected) {
-      setError("Please select an exam to continue");
-      return;
+  // Effect: Whenever selection changes, begin fetch instantly (only if not currently loading)
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchSyllabusChoice(choice) {
+      setError("");
+      setLoading(true);
+      setSyllabusFetched(false);
+
+      // Begin fetch
+      try {
+        await fetchSyllabusFromWeb(choice); // Throws on error
+        if (isMounted) {
+          setExam(choice);
+          setSyllabusFetched(true);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(
+            "Failed to fetch syllabus for selected exam. " +
+            (err?.message || "Please check your connection and try again.")
+          );
+        }
+      } finally {
+        if (isMounted) setLoading(false);
+      }
     }
-    setError("");
-    setLoading(true);
-    setSyllabusFetched(false);
-    try {
-      // Wait for syllabus fetch to finish (needed for blocking)
-      await fetchSyllabusFromWeb(selected); // will throw on error
-      setExam(selected); // only set exam after successful fetch
-      setSyllabusFetched(true);
-    } catch (err) {
-      setError(
-        "Failed to fetch syllabus for selected exam. " +
-        (err?.message || "Please check your connection and try again.")
-      );
-    } finally {
-      setLoading(false);
+
+    // If selected changes and is not empty, start fetch
+    if (selected) {
+      fetchSyllabusChoice(selected);
+      retryFetch.current = () => fetchSyllabusChoice(selected);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+    // Only run when selected changes
+    // eslint-disable-next-line
+  }, [selected, setExam]);
+
+  // Retry handler (in case of error)
+  const handleRetry = () => {
+    if (retryFetch.current && selected) {
+      retryFetch.current();
     }
   };
 
-  // Block flow until syllabus is successfully loaded (now handled by above logic)
+  // Block flow until syllabus is successfully loaded (setExam triggers modal close via context)
+  // UI disables all inputs while loading
+
   return (
     <div
       style={{
@@ -62,8 +89,7 @@ export default function ExamSelectionModal() {
       role="dialog"
       aria-modal="true"
     >
-      <form
-        onSubmit={handleSubmit}
+      <div
         style={{
           background: "#fff",
           borderRadius: 11,
@@ -104,7 +130,8 @@ export default function ExamSelectionModal() {
                 fontWeight: 500,
                 fontSize: "1.1rem",
                 color: "#333F53",
-                cursor: "pointer"
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading && selected !== option.value ? 0.7 : 1
               }}
             >
               <input
@@ -113,13 +140,27 @@ export default function ExamSelectionModal() {
                 value={option.value}
                 checked={selected === option.value}
                 onChange={() => {
-                  setSelected(option.value);
-                  setError("");
+                  if (!loading) {
+                    setSelected(option.value);
+                    setError("");
+                  }
                 }}
                 style={{ marginRight: 8 }}
                 disabled={loading}
               />
               {option.label}
+              {loading && selected === option.value && (
+                <span
+                  style={{
+                    marginLeft: 7,
+                    color: "var(--secondary)",
+                    fontSize: "0.98em"
+                  }}
+                  aria-live="polite"
+                >
+                  &nbsp;Loading...
+                </span>
+              )}
             </label>
           ))}
         </div>
@@ -133,23 +174,27 @@ export default function ExamSelectionModal() {
             Fetching official syllabus for {selected}... Please wait.
           </div>
         )}
-        <button
-          type="submit"
-          className="btn btn-large"
-          disabled={loading}
-          style={{
-            width: "100%",
-            marginTop: 7,
-            background: "var(--primary)",
-            color: "#fff",
-            border: "none",
-            borderRadius: 5,
-            fontSize: "1.1em"
-          }}
-        >
-          {loading ? "Fetching Syllabus..." : "Continue"}
-        </button>
-      </form>
+        {error && (
+          <div style={{ color: "var(--muted)", fontSize: "1em", marginTop: 7 }}>
+            <button
+              onClick={handleRetry}
+              className="btn btn-large"
+              disabled={loading}
+              style={{
+                marginTop: 2,
+                width: "100%",
+                background: "var(--primary)",
+                color: "#fff",
+                border: "none",
+                borderRadius: 5,
+                fontSize: "1.09em"
+              }}
+            >
+              Retry
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

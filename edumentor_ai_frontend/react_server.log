@@ -10,10 +10,10 @@ Injecting EditorRootWrapper import: ../.ve/EditorRootWrapper
 asset bundle.js 1.49 MiB [emitted] (name: main)
 asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
-cacheable modules 1.33 MiB
+cacheable modules 1.34 MiB
   modules by path ./node_modules/ 1.24 MiB 31 modules
-  modules by path ./src/ 81.7 KiB
-    modules by path ./src/features/*.js 64.4 KiB 13 modules
+  modules by path ./src/ 82.9 KiB
+    modules by path ./src/features/*.js 65.6 KiB 13 modules
     modules by path ./src/*.css 9.07 KiB 4 modules
     modules by path ./src/*.js 4.55 KiB 2 modules
     ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
@@ -21,14 +21,14 @@ cacheable modules 1.33 MiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1517 ms
+webpack 5.99.9 compiled successfully in 1499 ms
 assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.5 MiB
-  asset bundle.js 1.49 MiB [emitted] (name: main)
-  asset main.36d56a555d686f4239c3.hot-update.js 8.12 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.36d56a555d686f4239c3.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.5 MiB = bundle.js 1.49 MiB main.36d56a555d686f4239c3.hot-update.js 8.12 KiB
+assets by path *.js 1.51 MiB
+  asset bundle.js 1.5 MiB [emitted] (name: main)
+  asset main.7211cea3971f139782e5.hot-update.js 9.68 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.7211cea3971f139782e5.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.51 MiB = bundle.js 1.5 MiB main.7211cea3971f139782e5.hot-update.js 9.68 KiB
 cached modules 1.33 MiB [cached] 55 modules
 runtime modules 27.5 KiB 14 modules
-./src/features/ExamSelectionModal.js 5.13 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 107 ms
+./src/features/ExamSelectionModal.js 6.47 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 98 ms
