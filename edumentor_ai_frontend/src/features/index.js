@@ -7,3 +7,5 @@ export { SyllabusManager } from "./SyllabusManager";
 export { UserProgressContext } from "./UserProgressContext";
 export { UserProgressProvider } from "./UserProgressContext";
 export { ProgressMap } from "./ProgressMap";
+export { ExamProvider, useExam } from "./ExamContext";
+export { default as ExamSelectionModal } from "./ExamSelectionModal";

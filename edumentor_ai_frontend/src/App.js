@@ -6,7 +6,10 @@ import {
   ProgressMap,
   SyllabusContext,
   SyllabusManager,
-  UserProgressProvider
+  UserProgressProvider,
+  ExamProvider,
+  useExam,
+  ExamSelectionModal,
 } from "./features";
 import { SyllabusProvider } from "./features/SyllabusContext";
 import "./dashboard.css";
@@ -15,6 +18,17 @@ import "./dashboard.css";
  * PUBLIC_INTERFACE
  * Main application container for EduMentor AI dashboard.
  */
+
+// Wraps children to block access if exam not selected
+function EntranceExamGuard({ children }) {
+  const { exam } = useExam();
+  // ExamSelectionModal sets selection; modal blocks entire UI
+  if (!exam) {
+    return <ExamSelectionModal />;
+  }
+  return children;
+}
+
 function App() {
   const [selected, setSelected] = React.useState("progress-tracking");
   // Demo user
@@ -38,21 +52,25 @@ function App() {
   };
 
   return (
-    <UserProgressProvider>
-      <SyllabusProvider>
-        <DashboardLayout
-          user={user}
-          nav={nav}
-          selected={selected}
-          onSelect={setSelected}
-        >
-          <SyllabusManager />
-          <div>
-            {renderPage()}
-          </div>
-        </DashboardLayout>
-      </SyllabusProvider>
-    </UserProgressProvider>
+    <ExamProvider>
+      <UserProgressProvider>
+        <SyllabusProvider>
+          <EntranceExamGuard>
+            <DashboardLayout
+              user={user}
+              nav={nav}
+              selected={selected}
+              onSelect={setSelected}
+            >
+              <SyllabusManager />
+              <div>
+                {renderPage()}
+              </div>
+            </DashboardLayout>
+          </EntranceExamGuard>
+        </SyllabusProvider>
+      </UserProgressProvider>
+    </ExamProvider>
   );
 }
 
