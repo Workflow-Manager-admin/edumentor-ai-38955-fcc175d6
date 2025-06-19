@@ -22,3 +22,25 @@ cacheable modules 1.3 MiB
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
 webpack 5.99.9 compiled successfully in 1437 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.59 MiB
+  asset bundle.js 1.52 MiB [emitted] (name: main)
+  asset main.227757f403857a6502b1.hot-update.js 77.9 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.227757f403857a6502b1.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.59 MiB = bundle.js 1.52 MiB main.227757f403857a6502b1.hot-update.js 77.9 KiB
+cached modules 1.3 MiB [cached] 53 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 46.6 KiB
+  ./src/App.js 6.74 KiB [built] [code generated]
+  ./src/features/index.js 1.21 KiB [built] [code generated]
+  ./src/features/FocusMode.js 4.68 KiB [built] [code generated]
+  ./src/features/ProgressMap.js 3.29 KiB [built] [code generated]
+  ./src/features/MoodTracker.js 3.61 KiB [built] [code generated]
+  ./src/features/CareerVisualizer.js 2.43 KiB [built] [code generated]
+  ./src/features/RewardsSystem.js 4.25 KiB [built] [code generated]
+  ./src/features/DailyRecap.js 3.37 KiB [built] [code generated]
+  ./src/features/ManualStudyPlanner.js 2.95 KiB [built] [code generated]
+  ./src/features/RulesBasedCoach.js 1.98 KiB [built] [code generated]
+  ./src/features/LocalLeaderboard.js 2.17 KiB [built] [code generated]
+  + 3 modules
+webpack 5.99.9 compiled successfully in 396 ms
