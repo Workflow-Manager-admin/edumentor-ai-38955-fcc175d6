@@ -1,16 +1,15 @@
 //
-// Theme color definitions for MapMyPrep (light dashboard style)
-//
+// Bright, vivid color palette for MapMyPrep (lively dashboard style)
 
 export const colors = {
-  primary: "#4A90E2",
-  secondary: "#50E3C2",
-  accent: "#F5A623",
-  background: "#F8FAFB",
-  surface: "#FFFFFF",
-  text: "#333F53",
-  muted: "#8DA3B8",
-  border: "#E3E8EF"
+  primary: "#2979FF",      // vivid blue
+  secondary: "#00E67C",    // vibrant green
+  accent: "#FF3B61",       // bold hot pink/red
+  background: "#F5F7FF",   // lively clean background
+  surface: "#FFFFFF",      // super bright for cards/surfaces
+  text: "#131927",         // almost-black for max readability
+  muted: "#5E89FB",        // energetic blueish muted
+  border: "#CDE2FF"        // light azure for gentle borders
 };
 
 export const font = {
