@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { UserProgressContext } from "./UserProgressContext";
 
 // Util: Generate a unique id (simple alternative for this scope)
 /** Generate unique IDs for syllabus entries (not for production use) */
@@ -36,10 +37,33 @@ export function SyllabusProvider({ children }) {
     }
   });
 
-  // Persist syllabus on change
+  // Bring in progress context to update real stats, points, streaks (etc.)
+  const { updateSyllabusStats } = useContext(UserProgressContext ?? {});
+
+  // Helper to flatten syllabus for stat calculation
+  function flattenSyllabus(items) {
+    let arr = [];
+    for (const t of items) {
+      arr.push(t);
+      if (Array.isArray(t.children) && t.children.length > 0) {
+        arr = arr.concat(flattenSyllabus(t.children));
+      }
+    }
+    return arr;
+  }
+
+  // On syllabus update: persist & send updated stats to progress context.
   useEffect(() => {
     window.localStorage.setItem("_edumentor_syllabus_v1", JSON.stringify(syllabus));
-  }, [syllabus]);
+    // Compute and update aggregate stats for scoring and recaps:
+    if (updateSyllabusStats) {
+      const all = flattenSyllabus(syllabus);
+      const totalTopics = all.length;
+      const completed = all.filter(t => t.completed).length;
+      updateSyllabusStats({ totalTopics, completed });
+    }
+    // Do NOT trigger a point/streak reward here (that is handled by user actions, e.g., addFocusSession, etc.)
+  }, [syllabus, updateSyllabusStats]);
 
   function addTopic(label) {
     setSyllabus((curr) => [
@@ -60,11 +84,10 @@ export function SyllabusProvider({ children }) {
     setSyllabus((curr) =>
       deepUpdate(curr, topicId, (topic) => {
         topic.completed = !topic.completed;
-        // Optionally, propagate completion down to all children or up to parent, as needed
+        // Propagate completion down to children as needed
         if (topic.children && topic.children.length > 0) {
           topic.children = markAllChildren(topic.children, topic.completed);
         }
-        // If marking off, also unmark all subtopics. 
         return topic;
       })
     );

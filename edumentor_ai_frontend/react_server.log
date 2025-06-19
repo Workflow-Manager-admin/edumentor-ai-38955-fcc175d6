@@ -7,96 +7,60 @@
 <i> [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:3000/
 <i> [webpack-dev-server] Content not from webpack is served from './public' directory
 Injecting EditorRootWrapper import: ../.ve/EditorRootWrapper
-asset bundle.js 1.52 MiB [emitted] (name: main)
+asset bundle.js 1.53 MiB [emitted] (name: main)
 asset index.html 1.98 KiB [emitted]
 runtime modules 27.5 KiB 14 modules
-cacheable modules 1.34 MiB
-  modules by path ./node_modules/ 1.24 MiB 31 modules
-  modules by path ./src/ 89.8 KiB
-    modules by path ./src/features/*.js 69.8 KiB 24 modules
+cacheable modules 1.35 MiB
+  modules by path ./src/ 98.5 KiB
+    modules by path ./src/features/*.js 78.1 KiB 26 modules
     modules by path ./src/*.css 9.07 KiB 4 modules
-    modules by path ./src/*.js 7.25 KiB 2 modules
+    modules by path ./src/*.js 7.63 KiB 2 modules
     ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
+  modules by path ./node_modules/ 1.24 MiB 31 modules
   modules by path ./.ve/ 15.1 KiB
     modules by path ./.ve/*.js 10.6 KiB 2 modules
     modules by path ./.ve/*.css 2.93 KiB 2 modules
     ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 1586 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.52 MiB
-  asset bundle.js 1.52 MiB [emitted] (name: main)
-  asset main.41d84d4eed7497136d12.hot-update.js 6.38 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.41d84d4eed7497136d12.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.52 MiB = bundle.js 1.52 MiB main.41d84d4eed7497136d12.hot-update.js 6.38 KiB
-cached modules 1.34 MiB [cached] 66 modules
-runtime modules 27.5 KiB 14 modules
-./src/features/ProgressMap.js 3.62 KiB [built] [code generated]
-
-ERROR in ./src/features/ProgressMap.js 2:0-52
-Module not found: Error: Can't resolve './SyllabusContext' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features'
-resolve './SyllabusContext' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features'
-  using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src/features)
-    Field 'browser' doesn't contain a valid alias configuration
-    using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src/features/SyllabusContext)
-      no extension
-        Field 'browser' doesn't contain a valid alias configuration
-        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/SyllabusContext doesn't exist
-      .js
-        Field 'browser' doesn't contain a valid alias configuration
-        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/SyllabusContext.js doesn't exist
-      .jsx
-        Field 'browser' doesn't contain a valid alias configuration
-        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/SyllabusContext.jsx doesn't exist
-      as directory
-        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/SyllabusContext doesn't exist
- @ ./src/features/index.js 15:0-44 15:0-44
- @ ./src/App.js 3:0-5:204 110:39-55 112:32-47 117:33-42 121:33-44 125:33-44 129:33-49 133:33-46 137:33-43 142:39-50 144:32-46 149:33-51 153:33-50 158:39-54 160:32-49 165:33-48 169:33-49 173:33-42 177:33-49 181:33-51 185:33-54 189:33-55 193:33-49 197:33-47 201:33-49
- @ ./src/index.js 5:0-24 11:32-35
-
-webpack 5.99.9 compiled with 1 error in 91 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.53 MiB
-  asset bundle.js 1.52 MiB [emitted] (name: main)
-  asset main.698b166c4ddb849b71db.hot-update.js 11 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.698b166c4ddb849b71db.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.53 MiB = bundle.js 1.52 MiB main.698b166c4ddb849b71db.hot-update.js 11 KiB
-cached modules 1.34 MiB [cached] 66 modules
-runtime modules 27.5 KiB 14 modules
-javascript modules 7.08 KiB
-  ./src/features/ProgressMap.js 3.62 KiB [code generated]
-  ./src/features/SyllabusContext.js 3.46 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 76 ms
+webpack 5.99.9 compiled successfully in 1624 ms
 assets by status 1.98 KiB [cached] 1 asset
 assets by path *.js 1.55 MiB
-  asset bundle.js 1.53 MiB [emitted] (name: main)
-  asset main.4a5051c7a7eb3b69ee69.hot-update.js 17.9 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.4a5051c7a7eb3b69ee69.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.55 MiB = bundle.js 1.53 MiB main.4a5051c7a7eb3b69ee69.hot-update.js 17.9 KiB
-cached modules 1.34 MiB [cached] 67 modules
-runtime modules 27.5 KiB 14 modules
-javascript modules 10.7 KiB
-  ./src/App.js 7.11 KiB [built] [code generated]
-  ./src/features/SyllabusManager.js 3.56 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 96 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.54 MiB
-  asset bundle.js 1.53 MiB [emitted] (name: main)
-  asset main.c45ad317a46cd8f3f08d.hot-update.js 8.17 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.c45ad317a46cd8f3f08d.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.54 MiB = bundle.js 1.53 MiB main.c45ad317a46cd8f3f08d.hot-update.js 8.17 KiB
-cached modules 1.34 MiB [cached] 67 modules
-runtime modules 27.5 KiB 14 modules
-javascript modules 8.38 KiB
-  ./src/App.js 7.11 KiB [code generated]
-  ./src/features/index.js 1.27 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 53 ms
-assets by status 1.98 KiB [cached] 1 asset
-assets by path *.js 1.54 MiB
-  asset bundle.js 1.53 MiB [emitted] (name: main)
-  asset main.0770c50cf367cd43a2c4.hot-update.js 6.22 KiB [emitted] [immutable] [hmr] (name: main)
-asset main.0770c50cf367cd43a2c4.hot-update.json 28 bytes [emitted] [immutable] [hmr]
-Entrypoint main 1.54 MiB = bundle.js 1.53 MiB main.0770c50cf367cd43a2c4.hot-update.js 6.22 KiB
+  asset bundle.js 1.54 MiB [emitted] (name: main)
+  asset main.9be560b992c9abafcd22.hot-update.js 11.8 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.9be560b992c9abafcd22.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.55 MiB = bundle.js 1.54 MiB main.9be560b992c9abafcd22.hot-update.js 11.8 KiB
 cached modules 1.35 MiB [cached] 68 modules
 runtime modules 27.5 KiB 14 modules
-./src/features/ProgressTracking.js 3.62 KiB [built] [code generated]
-webpack 5.99.9 compiled successfully in 56 ms
+javascript modules 8.11 KiB
+  ./src/features/SyllabusContext.js 3.53 KiB [built] [code generated]
+  ./src/features/UserProgressContext.js 4.57 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 140 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.54 MiB
+  asset bundle.js 1.54 MiB [emitted] (name: main)
+  asset main.6b775e6012970f3f536c.hot-update.js 6.68 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.6b775e6012970f3f536c.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.54 MiB = bundle.js 1.54 MiB main.6b775e6012970f3f536c.hot-update.js 6.68 KiB
+cached modules 1.35 MiB [cached] 69 modules
+runtime modules 27.5 KiB 14 modules
+./src/features/SyllabusContext.js 4.39 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 75 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.55 MiB
+  asset bundle.js 1.54 MiB [emitted] (name: main)
+  asset main.92fad6a28845dd49483f.hot-update.js 12.5 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.92fad6a28845dd49483f.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.55 MiB = bundle.js 1.54 MiB main.92fad6a28845dd49483f.hot-update.js 12.5 KiB
+cached modules 1.35 MiB [cached] 69 modules
+runtime modules 27.5 KiB 14 modules
+./src/App.js 7.18 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 69 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.55 MiB
+  asset bundle.js 1.54 MiB [emitted] (name: main)
+  asset main.d84b87b68a582c95941e.hot-update.js 12.8 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.d84b87b68a582c95941e.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.55 MiB = bundle.js 1.54 MiB main.d84b87b68a582c95941e.hot-update.js 12.8 KiB
+cached modules 1.35 MiB [cached] 69 modules
+runtime modules 27.5 KiB 14 modules
+./src/App.js 7.35 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 77 ms
