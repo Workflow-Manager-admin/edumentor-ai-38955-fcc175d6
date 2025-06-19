@@ -1,0 +1,581 @@
+
+> react-kavia@0.1.0 start
+> cross-env EDIT_MODE=true webpack serve --config .ve/webpack.config.js --mode development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:3000/, http://[::1]:3000/
+<i> [webpack-dev-server] On Your Network (IPv4): http://172.17.0.2:3000/
+<i> [webpack-dev-server] Content not from webpack is served from './public' directory
+Injecting EditorRootWrapper import: ../.ve/EditorRootWrapper
+asset bundle.js 1.39 MiB [emitted] (name: main)
+asset index.html 1.98 KiB [emitted]
+runtime modules 27.5 KiB 14 modules
+modules by path ./node_modules/ 1.24 MiB 31 modules
+modules by path ./src/ 10.3 KiB
+  modules by path ./src/*.css 7.49 KiB 4 modules
+  modules by path ./src/*.js 2.76 KiB
+    ./src/index.js 530 bytes [built] [code generated]
+    ./src/App.js 2.24 KiB [built] [code generated]
+modules by path ./.ve/ 15.1 KiB
+  modules by path ./.ve/*.js 10.6 KiB 2 modules
+  modules by path ./.ve/*.css 2.93 KiB
+    ./.ve/EditorOverlay.css 2.25 KiB [built] [code generated]
+    ./node_modules/css-loader/dist/cjs.js!./.ve/EditorOverlay.css 697 bytes [built] [code generated]
+  ./.ve/EditorOverlay.jsx 1.58 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 1473 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.42 MiB
+  asset bundle.js 1.4 MiB [emitted] (name: main)
+  asset main.80d82e087ea2a4ebeb18.hot-update.js 22 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.80d82e087ea2a4ebeb18.hot-update.json 97 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.42 MiB = bundle.js 1.4 MiB main.80d82e087ea2a4ebeb18.hot-update.js 22 KiB
+cached modules 1.26 MiB [cached] 39 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 9.46 KiB
+  ./src/App.js 3.47 KiB [built] [code generated]
+  ./src/dashboard.css 2.24 KiB [built] [code generated]
+  ./node_modules/css-loader/dist/cjs.js!./src/dashboard.css 3.75 KiB [built] [code generated]
+
+ERROR in ./src/App.js 2:0-59
+Module not found: Error: Can't resolve './components/DashboardLayout' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 3:0-53
+Module not found: Error: Can't resolve './features/GoalSetting' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 4:0-63
+Module not found: Error: Can't resolve './features/ProgressTracking' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 9:0-59
+Module not found: Error: Can't resolve './features/GoalManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 10:0-61
+Module not found: Error: Can't resolve './features/ProgressUpdates' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+12 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 12 errors in 110 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.42 MiB
+  asset bundle.js 1.4 MiB [emitted] (name: main)
+  asset main.8f2ffb69eb5cba16c30d.hot-update.js 14.8 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.8f2ffb69eb5cba16c30d.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.42 MiB = bundle.js 1.4 MiB main.8f2ffb69eb5cba16c30d.hot-update.js 14.8 KiB
+cached modules 1.26 MiB [cached] 41 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 7.13 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/components/DashboardLayout.js 3.66 KiB [built] [code generated]
+
+ERROR in ./src/App.js 3:0-53
+Module not found: Error: Can't resolve './features/GoalSetting' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 4:0-63
+Module not found: Error: Can't resolve './features/ProgressTracking' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 9:0-59
+Module not found: Error: Can't resolve './features/GoalManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 10:0-61
+Module not found: Error: Can't resolve './features/ProgressUpdates' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+11 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 11 errors in 77 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.42 MiB
+  asset bundle.js 1.41 MiB [emitted] (name: main)
+  asset main.34df2d7779d2f0f46184.hot-update.js 12.3 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.34df2d7779d2f0f46184.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.42 MiB = bundle.js 1.41 MiB main.34df2d7779d2f0f46184.hot-update.js 12.3 KiB
+cached modules 1.27 MiB [cached] 42 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 5.43 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/GoalSetting.js 1.96 KiB [built] [code generated]
+
+ERROR in ./src/App.js 4:0-63
+Module not found: Error: Can't resolve './features/ProgressTracking' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 9:0-59
+Module not found: Error: Can't resolve './features/GoalManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 10:0-61
+Module not found: Error: Can't resolve './features/ProgressUpdates' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+10 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 10 errors in 52 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.42 MiB
+  asset bundle.js 1.41 MiB [emitted] (name: main)
+  asset main.baeb7ea153ae13eabdc4.hot-update.js 13.6 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.baeb7ea153ae13eabdc4.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.42 MiB = bundle.js 1.41 MiB main.baeb7ea153ae13eabdc4.hot-update.js 13.6 KiB
+cached modules 1.27 MiB [cached] 43 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 6.69 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/GoalManagement.js 3.22 KiB [built] [code generated]
+
+ERROR in ./src/App.js 4:0-63
+Module not found: Error: Can't resolve './features/ProgressTracking' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 10:0-61
+Module not found: Error: Can't resolve './features/ProgressUpdates' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+9 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 9 errors in 64 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.43 MiB
+  asset bundle.js 1.42 MiB [emitted] (name: main)
+  asset main.d90844fc1ec2b7b2dd98.hot-update.js 12.9 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.d90844fc1ec2b7b2dd98.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.43 MiB = bundle.js 1.42 MiB main.d90844fc1ec2b7b2dd98.hot-update.js 12.9 KiB
+cached modules 1.27 MiB [cached] 44 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 6.21 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/ProgressTracking.js 2.75 KiB [built] [code generated]
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 10:0-61
+Module not found: Error: Can't resolve './features/ProgressUpdates' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+8 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 8 errors in 43 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.43 MiB
+  asset bundle.js 1.42 MiB [emitted] (name: main)
+  asset main.b58b48b60c00dee2a382.hot-update.js 11.8 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.b58b48b60c00dee2a382.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.43 MiB = bundle.js 1.42 MiB main.b58b48b60c00dee2a382.hot-update.js 11.8 KiB
+cached modules 1.27 MiB [cached] 45 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 5.16 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/ProgressUpdates.js 1.69 KiB [built] [code generated]
+
+ERROR in ./src/App.js 5:0-61
+Module not found: Error: Can't resolve './features/MentorSelection' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+7 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 7 errors in 45 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.42 MiB [emitted] (name: main)
+  asset main.a12a6df7e044d99b6942.hot-update.js 13.7 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.a12a6df7e044d99b6942.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.42 MiB main.a12a6df7e044d99b6942.hot-update.js 13.7 KiB
+cached modules 1.28 MiB [cached] 46 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 6.86 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/MentorSelection.js 3.4 KiB [built] [code generated]
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 11:0-65
+Module not found: Error: Can't resolve './features/MentorInteraction' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+6 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 6 errors in 52 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.beb54267391cab9145f9.hot-update.js 11.7 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.beb54267391cab9145f9.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.beb54267391cab9145f9.hot-update.js 11.7 KiB
+cached modules 1.28 MiB [cached] 47 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 5.22 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/MentorInteraction.js 1.75 KiB [built] [code generated]
+
+ERROR in ./src/App.js 6:0-67
+Module not found: Error: Can't resolve './features/MotivationalNudges' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+5 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 5 errors in 41 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.1dad0bad40eaf838a925.hot-update.js 12 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.1dad0bad40eaf838a925.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.1dad0bad40eaf838a925.hot-update.js 12 KiB
+cached modules 1.28 MiB [cached] 48 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 5.48 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/MotivationalNudges.js 2.01 KiB [built] [code generated]
+
+ERROR in ./src/App.js 7:0-73
+Module not found: Error: Can't resolve './features/FeedbackEncouragement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+4 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 4 errors in 41 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.44 MiB
+  asset bundle.js 1.43 MiB [emitted] (name: main)
+  asset main.5955d370096a658554b8.hot-update.js 11.7 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.5955d370096a658554b8.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.44 MiB = bundle.js 1.43 MiB main.5955d370096a658554b8.hot-update.js 11.7 KiB
+cached modules 1.28 MiB [cached] 49 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 5.22 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/FeedbackEncouragement.js 1.75 KiB [built] [code generated]
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 12:0-75
+Module not found: Error: Can't resolve './features/RemindersNotifications' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+ @ ./src/index.js 5:0-24 11:32-35
+
+3 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.99.9 compiled with 3 errors in 44 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.45 MiB
+  asset bundle.js 1.44 MiB [emitted] (name: main)
+  asset main.18dfa039d55f7ea6a628.hot-update.js 13.1 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.18dfa039d55f7ea6a628.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.45 MiB = bundle.js 1.44 MiB main.18dfa039d55f7ea6a628.hot-update.js 13.1 KiB
+cached modules 1.29 MiB [cached] 50 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 6.33 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/RemindersNotifications.js 2.87 KiB [built] [code generated]
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+  using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src)
+    Field 'browser' doesn't contain a valid alias configuration
+    using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src/features/UserManagement)
+      no extension
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement doesn't exist
+      .js
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement.js doesn't exist
+      .jsx
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement.jsx doesn't exist
+      as directory
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement doesn't exist
+ @ ./src/index.js 5:0-24 11:32-35
+
+ERROR in ./src/App.js 13:0-63
+Module not found: Error: Can't resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+resolve './features/AnalyticsReports' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+  using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src)
+    Field 'browser' doesn't contain a valid alias configuration
+    using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src/features/AnalyticsReports)
+      no extension
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/AnalyticsReports doesn't exist
+      .js
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/AnalyticsReports.js doesn't exist
+      .jsx
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/AnalyticsReports.jsx doesn't exist
+      as directory
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/AnalyticsReports doesn't exist
+ @ ./src/index.js 5:0-24 11:32-35
+
+webpack 5.99.9 compiled with 2 errors in 42 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.46 MiB
+  asset bundle.js 1.44 MiB [emitted] (name: main)
+  asset main.f0e36da8e86a17cb32eb.hot-update.js 14 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.f0e36da8e86a17cb32eb.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.46 MiB = bundle.js 1.44 MiB main.f0e36da8e86a17cb32eb.hot-update.js 14 KiB
+cached modules 1.29 MiB [cached] 51 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 7.14 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/AnalyticsReports.js 3.68 KiB [built] [code generated]
+
+ERROR in ./src/App.js 8:0-59
+Module not found: Error: Can't resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+resolve './features/UserManagement' in '/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src'
+  using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src)
+    Field 'browser' doesn't contain a valid alias configuration
+    using description file: /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/package.json (relative path: ./src/features/UserManagement)
+      no extension
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement doesn't exist
+      .js
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement.js doesn't exist
+      .jsx
+        Field 'browser' doesn't contain a valid alias configuration
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement.jsx doesn't exist
+      as directory
+        /home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend/src/features/UserManagement doesn't exist
+ @ ./src/index.js 5:0-24 11:32-35
+
+webpack 5.99.9 compiled with 1 error in 43 ms
+assets by status 1.98 KiB [cached] 1 asset
+assets by path *.js 1.46 MiB
+  asset bundle.js 1.45 MiB [emitted] (name: main)
+  asset main.064bebd4ac2b06a76eb1.hot-update.js 15.6 KiB [emitted] [immutable] [hmr] (name: main)
+asset main.064bebd4ac2b06a76eb1.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 1.46 MiB = bundle.js 1.45 MiB main.064bebd4ac2b06a76eb1.hot-update.js 15.6 KiB
+cached modules 1.29 MiB [cached] 52 modules
+runtime modules 27.5 KiB 14 modules
+javascript modules 8.34 KiB
+  ./src/App.js 3.47 KiB [code generated]
+  ./src/features/UserManagement.js 4.88 KiB [built] [code generated]
+webpack 5.99.9 compiled successfully in 88 ms

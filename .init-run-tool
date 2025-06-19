@@ -1,0 +1,4 @@
+{
+    "command": "PORT=<port> BROWSER=none npm start",
+    "working_directory": "/home/kavia/workspace/code-generation/edumentor-ai-38955-fcc175d6/edumentor_ai_frontend"
+}
