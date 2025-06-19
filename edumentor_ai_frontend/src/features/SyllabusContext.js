@@ -5,15 +5,15 @@ import jeeSyllabus from "../data/jee_syllabus.json";
 
 /**
  * PUBLIC_INTERFACE
- * Immediately returns static syllabus data for NEET or JEE.
+ * Synchronously returns static syllabus data for NEET or JEE.
  *
  * @param {string} exam - The selected exam name (e.g. "NEET", "JEE").
- * @returns {Promise<Array>} - Array of {subject, topics: [{topic, subtopics}]} loaded directly from static import.
+ * @returns {Array} - Array of {subject, topics: [{topic, subtopics}]} loaded directly from static import.
  * @throws Error if unsupported exam is selected.
  *
- * This never fetches data from web or API, and always resolves instantly with the static bundle.
+ * This never fetches data from web or API and always returns instantly.
  **/
-export async function fetchSyllabusFromWeb(exam) {
+export function fetchSyllabusFromWeb(exam) {
   if (!exam) throw new Error("No exam selected.");
   const normalized = String(exam).toUpperCase();
   if (normalized === "NEET") {
