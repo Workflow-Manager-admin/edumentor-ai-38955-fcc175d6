@@ -10,3 +10,5 @@ export { ProgressMap } from "./ProgressMap";
 export { ExamProvider, useExam } from "./ExamContext";
 export { default as ExamSelectionModal } from "./ExamSelectionModal";
 export { default as StudyPlanner } from "./StudyPlanner";
+export { default as ExamPrepDatesModal } from "./ExamPrepDatesModal";
+export { ExamPrepDatesProvider, useExamPrepDates } from "./ExamPrepDatesContext";
