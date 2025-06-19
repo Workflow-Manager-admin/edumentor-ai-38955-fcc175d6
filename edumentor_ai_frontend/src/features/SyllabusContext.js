@@ -9,18 +9,16 @@ import { UserProgressContext } from "./UserProgressContext";
  * @returns {Promise<Array>} - Array of {subject, topics: [{topic, subtopics}]} obtained by scraping/parsing the official/latest syllabus.
  * @throws Error when fetch or parse fails.
  *
- * Fetches live data (scraped from official/credible sites) rather than local/demo/static files.
- * No demo/static fallback is provided.
+ * This fetches live data only; no static/demo fallback is allowed.
  * Properly rejects with a descriptive error message if unsupported or retrieval fails.
- * Callers must react to loading and error state in UI.
+ * Callers must handle all loading and error states in UI.
  */
 export async function fetchSyllabusFromWeb(exam) {
   if (!exam) throw new Error("No exam selected.");
   const normalized = String(exam).toUpperCase();
   let url = "";
-  // Choose an API route (proxy/back script) per exam
+  // Choose the API endpoint per exam
   if (normalized === "NEET") {
-    // Backend util writes to /utils/syllabus_neet.json; here, fetch proxy endpoint (future: via backend API)
     url = "/api/syllabus?exam=NEET";
   } else if (normalized === "JEE") {
     url = "/api/syllabus?exam=JEE";
@@ -28,15 +26,13 @@ export async function fetchSyllabusFromWeb(exam) {
     throw new Error("Live auto-fetch only supported for NEET and JEE presently.");
   }
   try {
-    // This endpoint should be backed by a live fetch service (must be implemented on backend or mocked)
+    // Live fetch (must be implemented by backend)
     const res = await fetch(url, { headers: { Accept: "application/json" } });
     if (!res.ok) {
-      // Pass through API status and body if available
       let msg = await res.text();
       throw new Error(msg || `Failed to fetch syllabus for ${exam} (status ${res.status})`);
     }
     const json = await res.json();
-    // Validate expected shape: array of {subject, topics: [...]}
     if (!Array.isArray(json)) throw new Error("Malformed syllabus received.");
     return json;
   } catch (e) {
@@ -45,8 +41,8 @@ export async function fetchSyllabusFromWeb(exam) {
     );
   }
 }
-// Util: Generate a unique id (simple alternative for this scope)
-/** Generate unique IDs for syllabus entries (not for production use) */
+
+// Utility: Generate unique IDs for imported/created syllabus entries
 let __id_counter = 1;
 function uniqueId() {
   return "__s" + (__id_counter++);
@@ -54,33 +50,26 @@ function uniqueId() {
 
 /**
  * PUBLIC_INTERFACE
- * Context to store the user's syllabus and progress across all relevant modules.
- *
- * The syllabus state is now strictly based on live-fetched syllabus JSON imported by the user
- * after web retrieval (no demo/sample is bundled or permissible).
+ * Context to store the user's syllabus (live-fetched only) and provide progress manipulation methods.
  * 
- * Syllabus state structure example (topics, nesting allowed):
- * [
- *   { id: 'm1', label: 'Math', completed: false, children: [
- *       { id:'a1', label:'Algebra', completed:true }, ...
- *   ] },
- *   { id: 's1', label: 'Science', ... }
- * ]
- * - All features/components must treat "syllabus == []" as empty (show upload/import/fetch required),
- *   and respect that the live web-fetch is the only supported import method going forward.
+ * The only valid way to import syllabus data is via web fetch & explicit user action. No bundled demo or static fallback is permitted.
+ * 
+ * Features/components must treat syllabus == [] as requiring import/fetch.
  */
 export const SyllabusContext = createContext();
 
 /**
  * PUBLIC_INTERFACE
- * Provides the syllabus context to consumers.
- *
- * Note: Syllabus is only imported via live web fetch and user action, not via any static/hardcoded data.
- * Consumers should display loading and error states as warranted by the live fetch.
+ * SyllabusProvider: makes syllabus and update functions available to descendants.
+ * 
+ * - Syllabus is only imported by web fetch and explicit import.
+ * - The context must NOT provide/demo any static/hardcoded syllabus in default empty state.
+ * - Provide helper functions to update progress, import/clear syllabus, but never hardcode any actual data.
+ * - UI consuming this context must present clear loading/error/empty states.
  */
 export function SyllabusProvider({ children }) {
   const [syllabus, setSyllabus] = useState(() => {
-    // Only previously imported syllabus is stored (no bundled demo in localStorage anymore)
+    // Only import from localStorage; no static/hardcoded/demo
     try {
       const d = window.localStorage.getItem("_edumentor_syllabus_v1");
       return d ? JSON.parse(d) : [];
@@ -89,10 +78,10 @@ export function SyllabusProvider({ children }) {
     }
   });
 
-  // Bring in progress context to update real stats, points, streaks (etc.)
+  // Bring in progress context for aggregate stats
   const { updateSyllabusStats } = useContext(UserProgressContext ?? {});
 
-  // Helper to flatten syllabus for stat calculation
+  // Helper to flatten for stats
   function flattenSyllabus(items) {
     let arr = [];
     for (const t of items) {
@@ -104,25 +93,28 @@ export function SyllabusProvider({ children }) {
     return arr;
   }
 
-  // On syllabus update: persist & send updated stats to progress context.
+  // Persist syllabus and update progress stats
   useEffect(() => {
     window.localStorage.setItem("_edumentor_syllabus_v1", JSON.stringify(syllabus));
-    // Compute and update aggregate stats for scoring and recaps:
     if (updateSyllabusStats) {
       const all = flattenSyllabus(syllabus);
       const totalTopics = all.length;
       const completed = all.filter(t => t.completed).length;
       updateSyllabusStats({ totalTopics, completed });
     }
-    // Do NOT trigger a point/streak reward here (that is handled by user actions, e.g., addFocusSession, etc.)
   }, [syllabus, updateSyllabusStats]);
 
+  // --- Public syllabus context API ---
+
+  // Add a (root) topic (Manual add, NOT part of automated study planner)
   function addTopic(label) {
     setSyllabus((curr) => [
       ...curr,
       { id: uniqueId(), label, children: [], completed: false }
     ]);
   }
+
+  // Add a subtopic to a (topic or parent), given parent id
   function addSubtopic(parentId, sublabel) {
     setSyllabus((curr) => deepUpdate(curr, parentId, (topic) => {
       if (!topic.children) topic.children = [];
@@ -131,12 +123,12 @@ export function SyllabusProvider({ children }) {
     }));
   }
 
-  // Mark completion for given topic/subtopic id, toggling value
+  // Mark any topic or subtopic as completed/not-completed
   function updateProgress(topicId) {
     setSyllabus((curr) =>
       deepUpdate(curr, topicId, (topic) => {
         topic.completed = !topic.completed;
-        // Propagate completion down to children as needed
+        // Propagate completion to children if any
         if (topic.children && topic.children.length > 0) {
           topic.children = markAllChildren(topic.children, topic.completed);
         }
@@ -145,7 +137,7 @@ export function SyllabusProvider({ children }) {
     );
   }
 
-  /** Recursively updates node with matching id with given updater */
+  // Recursively deep-update syllabus for a node id and updater function
   function deepUpdate(list, searchId, updater) {
     return list.map((item) => {
       if (item.id === searchId) {
@@ -160,6 +152,8 @@ export function SyllabusProvider({ children }) {
       return item;
     });
   }
+
+  // Recursively mark all children (for propagate-completion)
   function markAllChildren(children, completedValue) {
     return children.map((c) => ({
       ...c,
@@ -168,12 +162,13 @@ export function SyllabusProvider({ children }) {
     }));
   }
 
+  // Remove syllabus and clear localStorage
   function resetSyllabus() {
     setSyllabus([]);
     window.localStorage.removeItem("_edumentor_syllabus_v1");
   }
 
-  /** Allow user to upload their own syllabus (.json format) */
+  // Only path for import is user action (web-fetched syllabus supplied as JSON)
   function importSyllabus(json) {
     setSyllabus(Array.isArray(json) ? json : []);
   }
