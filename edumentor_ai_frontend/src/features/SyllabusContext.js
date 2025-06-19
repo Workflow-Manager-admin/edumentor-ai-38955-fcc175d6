@@ -1,44 +1,29 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { UserProgressContext } from "./UserProgressContext";
+import neetSyllabus from "../data/neet_syllabus.json";
+import jeeSyllabus from "../data/jee_syllabus.json";
 
 /**
  * PUBLIC_INTERFACE
- * Fetches the official syllabus from the live web for a given entrance exam.
- * 
- * @param {string} exam - The selected exam name (e.g. "NEET", "JEE").
- * @returns {Promise<Array>} - Array of {subject, topics: [{topic, subtopics}]} obtained by scraping/parsing the official/latest syllabus.
- * @throws Error when fetch or parse fails.
+ * Immediately returns static syllabus data for NEET or JEE.
  *
- * This fetches live data only; no static/demo fallback is allowed.
- * Properly rejects with a descriptive error message if unsupported or retrieval fails.
- * Callers must handle all loading and error states in UI.
- */
+ * @param {string} exam - The selected exam name (e.g. "NEET", "JEE").
+ * @returns {Promise<Array>} - Array of {subject, topics: [{topic, subtopics}]} loaded directly from static import.
+ * @throws Error if unsupported exam is selected.
+ *
+ * This never fetches data from web or API, and always resolves instantly with the static bundle.
+ **/
 export async function fetchSyllabusFromWeb(exam) {
   if (!exam) throw new Error("No exam selected.");
   const normalized = String(exam).toUpperCase();
-  let url = "";
-  // Choose the API endpoint per exam
   if (normalized === "NEET") {
-    url = "/api/syllabus?exam=NEET";
+    if (!Array.isArray(neetSyllabus)) throw new Error("Malformed NEET syllabus data.");
+    return neetSyllabus;
   } else if (normalized === "JEE") {
-    url = "/api/syllabus?exam=JEE";
+    if (!Array.isArray(jeeSyllabus)) throw new Error("Malformed JEE syllabus data.");
+    return jeeSyllabus;
   } else {
-    throw new Error("Live auto-fetch only supported for NEET and JEE presently.");
-  }
-  try {
-    // Live fetch (must be implemented by backend)
-    const res = await fetch(url, { headers: { Accept: "application/json" } });
-    if (!res.ok) {
-      let msg = await res.text();
-      throw new Error(msg || `Failed to fetch syllabus for ${exam} (status ${res.status})`);
-    }
-    const json = await res.json();
-    if (!Array.isArray(json)) throw new Error("Malformed syllabus received.");
-    return json;
-  } catch (e) {
-    throw new Error(
-      `Syllabus fetch error: ${e.message || e.toString()}`
-    );
+    throw new Error("Official syllabus only bundled for NEET and JEE.");
   }
 }
 
@@ -50,26 +35,22 @@ function uniqueId() {
 
 /**
  * PUBLIC_INTERFACE
- * Context to store the user's syllabus (live-fetched only) and provide progress manipulation methods.
- * 
- * The only valid way to import syllabus data is via web fetch & explicit user action. No bundled demo or static fallback is permitted.
- * 
- * Features/components must treat syllabus == [] as requiring import/fetch.
+ * Context to store the user's syllabus (static, exam-dependent) and provide progress manipulation methods.
+ *
+ * When user selects NEET or JEE, the syllabus is imported synchronously from static JSON (via import), and appears immediately in UI.
+ * Manual and file-import (custom) still supported.
  */
 export const SyllabusContext = createContext();
 
 /**
  * PUBLIC_INTERFACE
  * SyllabusProvider: makes syllabus and update functions available to descendants.
- * 
- * - Syllabus is only imported by web fetch and explicit import.
- * - The context must NOT provide/demo any static/hardcoded syllabus in default empty state.
- * - Provide helper functions to update progress, import/clear syllabus, but never hardcode any actual data.
- * - UI consuming this context must present clear loading/error/empty states.
+ *
+ * - Syllabus is imported via context-native logic, using instant static bundle for NEET/JEE after exam select.
+ * - UI consuming this context will always see the syllabus immediately for NEET/JEE after selection.
  */
 export function SyllabusProvider({ children }) {
   const [syllabus, setSyllabus] = useState(() => {
-    // Only import from localStorage; no static/hardcoded/demo
     try {
       const d = window.localStorage.getItem("_mapmyprep_syllabus_v1");
       return d ? JSON.parse(d) : [];
@@ -168,9 +149,20 @@ export function SyllabusProvider({ children }) {
     window.localStorage.removeItem("_mapmyprep_syllabus_v1");
   }
 
-  // Only path for import is user action (web-fetched syllabus supplied as JSON)
+  // Imports syllabus (from static, directly, or manual upload)
   function importSyllabus(json) {
     setSyllabus(Array.isArray(json) ? json : []);
+  }
+
+  // Synchronously set syllabus based on selected exam
+  function importSyllabusForExam(exam) {
+    if (!exam) return;
+    const normalized = String(exam).toUpperCase();
+    if (normalized === "NEET") {
+      setSyllabus(Array.isArray(neetSyllabus) ? neetSyllabus : []);
+    } else if (normalized === "JEE") {
+      setSyllabus(Array.isArray(jeeSyllabus) ? jeeSyllabus : []);
+    }
   }
 
   return (
@@ -181,6 +173,7 @@ export function SyllabusProvider({ children }) {
         addSubtopic,
         updateProgress,
         importSyllabus,
+        importSyllabusForExam,
         resetSyllabus,
       }}
     >
