@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useExam } from "./ExamContext";
 
-// Key for browser storage
+// Key for browser storage (used across context and modal)
 const DATES_STORAGE_KEY = "_edumentor_exam_dates_v1";
 
 /**
  * PUBLIC_INTERFACE
- * Prompt/modal shown after exam selection, blocks entire UI until both dates are captured.
- * Stores preparation start and exam date in localStorage and context.
+ * Modal prompt after exam selection for input of preparation start and exam dates.
+ * Blocks UI progression until both are set. Persists to context/state and localStorage.
  */
 export default function ExamPrepDatesModal({ onSave }) {
   const { exam } = useExam();
@@ -15,24 +15,26 @@ export default function ExamPrepDatesModal({ onSave }) {
   const [examDate, setExamDate] = useState("");
   const [error, setError] = useState("");
 
-  // Load previously saved dates if available
+  // On mount, load if any prep dates exist for this exam from localStorage
   useEffect(() => {
     try {
       const d = window.localStorage.getItem(DATES_STORAGE_KEY);
       if (d) {
-        const { startDate, examDate } = JSON.parse(d);
-        if (startDate) setStartDate(startDate);
-        if (examDate) setExamDate(examDate);
+        const parsed = JSON.parse(d);
+        if (parsed && parsed.startDate) setStartDate(parsed.startDate);
+        if (parsed && parsed.examDate) setExamDate(parsed.examDate);
       }
     } catch {}
   }, []);
 
+  // Validate that both dates are set and start is not after exam date
   const validateDates = (start, exam) => {
     if (!start || !exam) return false;
     if (new Date(start) > new Date(exam)) return false;
     return true;
   };
 
+  // On submit, persist, and set in parent/context. UI cannot proceed if not valid.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!startDate || !examDate) {
@@ -43,15 +45,13 @@ export default function ExamPrepDatesModal({ onSave }) {
       setError("Start date must not be after exam date.");
       return;
     }
-    // Save to localStorage
-    window.localStorage.setItem(
-      DATES_STORAGE_KEY,
-      JSON.stringify({ startDate, examDate, exam })
-    );
-    // Send to parent for context/global state
+    // Save to localStorage (along with exam for redundancy)
+    window.localStorage.setItem(DATES_STORAGE_KEY, JSON.stringify({ startDate, examDate, exam }));
+    // Pass to parent to update prep dates context/global state (needed for context/state sync)
     if (onSave) onSave({ startDate, examDate });
   };
 
+  // Modal blocks entire viewport until both dates present & valid
   return (
     <div
       style={{
@@ -149,7 +149,7 @@ export default function ExamPrepDatesModal({ onSave }) {
 }
 
 // PUBLIC_INTERFACE
-// Retrieve dates from browser storage (utility for consumers outside React)
+// Utility: retrieve dates from localStorage (for non-component/manual consumers)
 export function getExamPrepDatesFromStorage() {
   try {
     const d = window.localStorage.getItem(DATES_STORAGE_KEY);
