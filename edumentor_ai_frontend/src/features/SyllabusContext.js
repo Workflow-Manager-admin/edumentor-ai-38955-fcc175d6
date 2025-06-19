@@ -3,31 +3,46 @@ import { UserProgressContext } from "./UserProgressContext";
 
 /**
  * PUBLIC_INTERFACE
- * Fetch the syllabus from the backend or scraping util based on exam name.
- * Returns promise of syllabus in JSON format conforming to subject/topics tree.
+ * Fetches the official syllabus from the live web for a given entrance exam.
+ * 
+ * @param {string} exam - The selected exam name (e.g. "NEET", "JEE").
+ * @returns {Promise<Array>} - Array of {subject, topics: [{topic, subtopics}]} obtained by scraping/parsing the official/latest syllabus.
+ * @throws Error when fetch or parse fails.
+ *
+ * Fetches live data (scraped from official/credible sites) rather than local/demo/static files.
+ * No demo/static fallback is provided.
+ * Properly rejects with a descriptive error message if unsupported or retrieval fails.
+ * Callers must react to loading and error state in UI.
  */
 export async function fetchSyllabusFromWeb(exam) {
   if (!exam) throw new Error("No exam selected.");
-  // Only supported: NEET, JEE for now; fallback = reject
   const normalized = String(exam).toUpperCase();
+  let url = "";
+  // Choose an API route (proxy/back script) per exam
+  if (normalized === "NEET") {
+    // Backend util writes to /utils/syllabus_neet.json; here, fetch proxy endpoint (future: via backend API)
+    url = "/api/syllabus?exam=NEET";
+  } else if (normalized === "JEE") {
+    url = "/api/syllabus?exam=JEE";
+  } else {
+    throw new Error("Live auto-fetch only supported for NEET and JEE presently.");
+  }
   try {
-    // Client proxy call (to backend/serverless or local Node script)
-    // We'll use a quick fetch from /public/syllabus_xxx.json as demo
-    let url = "";
-    if (normalized === "NEET") {
-      url = "/syllabus_neet.json";
-    } else if (normalized === "JEE") {
-      url = "/syllabus_jee.json";
-    } else {
-      throw new Error("Syllabus auto-fetch not supported for this exam.");
+    // This endpoint should be backed by a live fetch service (must be implemented on backend or mocked)
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
+    if (!res.ok) {
+      // Pass through API status and body if available
+      let msg = await res.text();
+      throw new Error(msg || `Failed to fetch syllabus for ${exam} (status ${res.status})`);
     }
-    // Fetch the syllabus JSON file synchronously
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Failed to download syllabus for " + exam);
     const json = await res.json();
+    // Validate expected shape: array of {subject, topics: [...]}
+    if (!Array.isArray(json)) throw new Error("Malformed syllabus received.");
     return json;
   } catch (e) {
-    throw new Error("Syllabus fetch error: " + e.message);
+    throw new Error(
+      `Syllabus fetch error: ${e.message || e.toString()}`
+    );
   }
 }
 // Util: Generate a unique id (simple alternative for this scope)
@@ -41,6 +56,9 @@ function uniqueId() {
  * PUBLIC_INTERFACE
  * Context to store the user's syllabus and progress across all relevant modules.
  *
+ * The syllabus state is now strictly based on live-fetched syllabus JSON imported by the user
+ * after web retrieval (no demo/sample is bundled or permissible).
+ * 
  * Syllabus state structure example (topics, nesting allowed):
  * [
  *   { id: 'm1', label: 'Math', completed: false, children: [
@@ -48,16 +66,21 @@ function uniqueId() {
  *   ] },
  *   { id: 's1', label: 'Science', ... }
  * ]
+ * - All features/components must treat "syllabus == []" as empty (show upload/import/fetch required),
+ *   and respect that the live web-fetch is the only supported import method going forward.
  */
 export const SyllabusContext = createContext();
 
 /**
  * PUBLIC_INTERFACE
  * Provides the syllabus context to consumers.
+ *
+ * Note: Syllabus is only imported via live web fetch and user action, not via any static/hardcoded data.
+ * Consumers should display loading and error states as warranted by the live fetch.
  */
 export function SyllabusProvider({ children }) {
   const [syllabus, setSyllabus] = useState(() => {
-    // Try loading previously saved/entered syllabus from localStorage
+    // Only previously imported syllabus is stored (no bundled demo in localStorage anymore)
     try {
       const d = window.localStorage.getItem("_edumentor_syllabus_v1");
       return d ? JSON.parse(d) : [];

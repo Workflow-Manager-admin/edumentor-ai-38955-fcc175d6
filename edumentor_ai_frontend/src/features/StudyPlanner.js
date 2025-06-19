@@ -4,13 +4,11 @@ import { ExamContext } from "./ExamContext";
 
 /**
  * PUBLIC_INTERFACE
- * StudyPlanner: Allocates syllabus across available prep period (start-exam date)
- * Generates an editable, autosaving plan (list, Gantt, or calendar style).
+ * StudyPlanner: Generates study plan only from an imported, live web-fetched syllabus.
  *
- * - Takes syllabus (after fetched/imported), startDate, and examDate as input.
- * - Auto-allocates each topic/subtopic across even intervals or weighted priority.
- * - Displays as list-style schedule (expandable), supports editing order, hours, dates.
- * - Autosaves plan to localStorage.
+ * - If the syllabus is empty or unavailable (e.g. fetch failed), user sees appropriate UI.
+ * - If plan is not available because web import failed, shows error/empty state, does NOT fallback to any static/demo data.
+ * - All logic is now strictly reliant on the real syllabus from the web for planning.
  */
 
 function defaultSuggestedHours(depth = 0) {
@@ -103,20 +101,39 @@ export function StudyPlanner({ planDays = 90 }) {
   const [expanded, setExpanded] = useState({});
   const [isEditing, setIsEditing] = useState(false);
 
-  // Load from localStorage, or create auto plan
+  // New: track loading/error/empty state for web-fetched syllabus
+  const [syllabusStatus, setSyllabusStatus] = useState("idle"); // "loading", "error", "ready", "empty"
+  const [syllabusError, setSyllabusError] = useState("");
+
   useEffect(() => {
-    const key = getStorageKey(exam);
-    let saved = null;
-    try {
-      saved = window.localStorage.getItem(key);
-      saved = saved ? JSON.parse(saved) : null;
-    } catch {}
-    if (saved && Array.isArray(saved)) {
-      setPlan(saved);
-    } else if (syllabus && syllabus.length > 0) {
-      const initial = addPlanFields(syllabus, null, planDays);
-      setPlan(initial);
-      window.localStorage.setItem(key, JSON.stringify(initial));
+    // Simulate syllabus state check
+    if (Array.isArray(syllabus) && syllabus.length > 0) {
+      setSyllabusStatus("ready");
+      setSyllabusError("");
+    } else {
+      setSyllabusStatus("empty");
+      setSyllabusError("");
+    }
+  }, [syllabus]);
+
+  // Do not auto-populate plan if syllabus empty or absent (must live fetch/import).
+  useEffect(() => {
+    if (Array.isArray(syllabus) && syllabus.length > 0) {
+      const key = getStorageKey(exam);
+      let saved = null;
+      try {
+        saved = window.localStorage.getItem(key);
+        saved = saved ? JSON.parse(saved) : null;
+      } catch {}
+      if (saved && Array.isArray(saved)) {
+        setPlan(saved);
+      } else {
+        const initial = addPlanFields(syllabus, null, planDays);
+        setPlan(initial);
+        window.localStorage.setItem(key, JSON.stringify(initial));
+      }
+    } else {
+      setPlan([]); // No static default allowed.
     }
   }, [syllabus, exam, planDays]);
 
@@ -299,12 +316,28 @@ export function StudyPlanner({ planDays = 90 }) {
       <div style={{ color: "var(--muted)", marginBottom: 12 }}>
         Syllabus auto-imported and split by subject/topic. Adjust plan parameters (hours, dates, milestones) before starting. All changes are auto-saved. 
       </div>
-      {plan.length === 0 && (
-        <div style={{ color: "var(--muted)" }}>
-          No syllabus loaded. Please import your syllabus above first.
+      {syllabusStatus === "loading" && (
+        <div style={{ color: "var(--secondary)", fontWeight: 500, marginBottom: 10 }}>
+          Loading syllabus data from the web&hellip;
         </div>
       )}
-      {plan.length > 0 && (
+      {syllabusStatus === "empty" && (
+        <div style={{ color: "#FF3742", fontWeight: 500 }}>
+          No syllabus found for your selected exam. Please fetch/import your syllabus via the official source first.
+        </div>
+      )}
+      {syllabusStatus === "error" && (
+        <div style={{ color: "#FF3742", fontWeight: 500 }}>
+          Failed to fetch the syllabus: {syllabusError || "Unknown error"}. <br />
+          Please try re-importing your syllabus.
+        </div>
+      )}
+      {syllabusStatus === "ready" && plan.length === 0 && (
+        <div style={{ color: "var(--muted)" }}>
+          Syllabus imported, but no plan generated. Try reloading or refetching the syllabus.
+        </div>
+      )}
+      {syllabusStatus === "ready" && plan.length > 0 && (
         <>
           <div style={{ marginBottom: 10 }}>
             <button
