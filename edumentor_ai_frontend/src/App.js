@@ -26,6 +26,8 @@ import {
   DemoBuddy,
   StaticQnAChatbot
 } from "./features";
+import { SyllabusProvider } from "./features/SyllabusContext";
+import { SyllabusManager } from "./features/SyllabusManager";
 import "./dashboard.css";
 
 /**
@@ -123,32 +125,35 @@ function App() {
   };
 
   return (
-    <DashboardLayout
-      user={user}
-      nav={nav}
-      selected={selected}
-      onSelect={setSelected}
-    >
-      <div>
-        {/* Label for demo/alternative section if applicable */}
-        {(nav.find((n) => n.key === selected && n.demo)) && (
-          <div style={{
-            color: "#ED8510",
-            background: "#fffbe3",
-            padding: "7px 12px",
-            borderRadius: 7,
-            fontWeight: 600,
-            fontSize: "1.04em",
-            marginBottom: 16,
-            display: "inline-block"
-          }}>
-            <span style={{ fontSize: "1.08em", marginRight: 7 }}>⚠️</span>
-            Demo/Alternative Version: This feature is a static or simulated alternative to a backend/AI-powered version.
-          </div>
-        )}
-        {renderPage()}
-      </div>
-    </DashboardLayout>
+    <SyllabusProvider>
+      <DashboardLayout
+        user={user}
+        nav={nav}
+        selected={selected}
+        onSelect={setSelected}
+      >
+        <SyllabusManager />
+        <div>
+          {/* Label for demo/alternative section if applicable */}
+          {(nav.find((n) => n.key === selected && n.demo)) && (
+            <div style={{
+              color: "#ED8510",
+              background: "#fffbe3",
+              padding: "7px 12px",
+              borderRadius: 7,
+              fontWeight: 600,
+              fontSize: "1.04em",
+              marginBottom: 16,
+              display: "inline-block"
+            }}>
+              <span style={{ fontSize: "1.08em", marginRight: 7 }}>⚠️</span>
+              Demo/Alternative Version: This feature is a static or simulated alternative to a backend/AI-powered version.
+            </div>
+          )}
+          {renderPage()}
+        </div>
+      </DashboardLayout>
+    </SyllabusProvider>
   );
 }
 

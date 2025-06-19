@@ -23,3 +23,5 @@ export { LocalLeaderboard } from "./LocalLeaderboard";
 export { QuickRevisionPlan } from "./QuickRevisionPlan";
 export { DemoBuddy } from "./DemoBuddy";
 export { StaticQnAChatbot } from "./StaticQnAChatbot";
+
+export { SyllabusContext } from "./SyllabusContext";
