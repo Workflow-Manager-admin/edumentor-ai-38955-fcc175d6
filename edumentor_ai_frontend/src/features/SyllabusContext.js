@@ -1,6 +1,35 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { UserProgressContext } from "./UserProgressContext";
 
+/**
+ * PUBLIC_INTERFACE
+ * Fetch the syllabus from the backend or scraping util based on exam name.
+ * Returns promise of syllabus in JSON format conforming to subject/topics tree.
+ */
+export async function fetchSyllabusFromWeb(exam) {
+  if (!exam) throw new Error("No exam selected.");
+  // Only supported: NEET, JEE for now; fallback = reject
+  const normalized = String(exam).toUpperCase();
+  try {
+    // Client proxy call (to backend/serverless or local Node script)
+    // We'll use a quick fetch from /public/syllabus_xxx.json as demo
+    let url = "";
+    if (normalized === "NEET") {
+      url = "/syllabus_neet.json";
+    } else if (normalized === "JEE") {
+      url = "/syllabus_jee.json";
+    } else {
+      throw new Error("Syllabus auto-fetch not supported for this exam.");
+    }
+    // Fetch the syllabus JSON file synchronously
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to download syllabus for " + exam);
+    const json = await res.json();
+    return json;
+  } catch (e) {
+    throw new Error("Syllabus fetch error: " + e.message);
+  }
+}
 // Util: Generate a unique id (simple alternative for this scope)
 /** Generate unique IDs for syllabus entries (not for production use) */
 let __id_counter = 1;

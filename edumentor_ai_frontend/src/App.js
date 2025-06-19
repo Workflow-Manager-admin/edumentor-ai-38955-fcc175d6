@@ -15,6 +15,7 @@ import {
   useExamPrepDates,
   ExamPrepDatesModal
 } from "./features";
+import SyllabusAutoImporter from "./features/SyllabusAutoImporter";
 import { SyllabusProvider } from "./features/SyllabusContext";
 import "./dashboard.css";
 
@@ -90,6 +91,7 @@ function App() {
                 selected={selected}
                 onSelect={setSelected}
               >
+                <SyllabusAutoImporter />
                 <SyllabusManager />
                 <StudyPlanner />
                 <div>
