@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useExam } from "./ExamContext";
+import { fetchSyllabusFromWeb } from "./SyllabusContext";
 
-/**
- * Only offer NEET and JEE as exam options.
- */
+// Only offer NEET and JEE as exam options.
 const EXAMS = [
   { value: "NEET", label: "NEET" },
   { value: "JEE", label: "JEE" }
@@ -11,22 +10,41 @@ const EXAMS = [
 
 /**
  * PUBLIC_INTERFACE
- * Modal to prompt for entrance exam selection; blocks until selection.
+ * Modal to prompt for entrance exam selection; blocks until selection & official syllabus is fetched.
  */
 export default function ExamSelectionModal() {
   const { setExam } = useExam();
   const [selected, setSelected] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [syllabusFetched, setSyllabusFetched] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Triggers auto-fetch when user chooses NEET/JEE (as soon as selection is made and "Continue" is pressed)
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selected) {
       setError("Please select an exam to continue");
       return;
     }
-    setExam(selected);
+    setError("");
+    setLoading(true);
+    setSyllabusFetched(false);
+    try {
+      // Wait for syllabus fetch to finish (needed for blocking)
+      await fetchSyllabusFromWeb(selected); // will throw on error
+      setExam(selected); // only set exam after successful fetch
+      setSyllabusFetched(true);
+    } catch (err) {
+      setError(
+        "Failed to fetch syllabus for selected exam. " +
+        (err?.message || "Please check your connection and try again.")
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // Block flow until syllabus is successfully loaded (now handled by above logic)
   return (
     <div
       style={{
@@ -99,17 +117,26 @@ export default function ExamSelectionModal() {
                   setError("");
                 }}
                 style={{ marginRight: 8 }}
+                disabled={loading}
               />
               {option.label}
             </label>
           ))}
         </div>
         {error && (
-          <div style={{ color: "#ff3742", fontWeight: 500, marginBottom: 10 }}>{error}</div>
+          <div style={{ color: "#ff3742", fontWeight: 500, marginBottom: 10 }}>
+            {error}
+          </div>
+        )}
+        {loading && (
+          <div style={{ color: "var(--secondary)", fontWeight: 500, marginBottom: 10 }}>
+            Fetching official syllabus for {selected}... Please wait.
+          </div>
         )}
         <button
           type="submit"
           className="btn btn-large"
+          disabled={loading}
           style={{
             width: "100%",
             marginTop: 7,
@@ -120,7 +147,7 @@ export default function ExamSelectionModal() {
             fontSize: "1.1em"
           }}
         >
-          Continue
+          {loading ? "Fetching Syllabus..." : "Continue"}
         </button>
       </form>
     </div>
