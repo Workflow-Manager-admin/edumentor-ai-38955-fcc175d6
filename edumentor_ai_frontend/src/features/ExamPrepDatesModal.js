@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useExam } from "./ExamContext";
 
-// Key for browser storage (used across context and modal)
-const DATES_STORAGE_KEY = "_edumentor_exam_dates_v1";
+ // Key for browser storage (used across context and modal)
+const DATES_STORAGE_KEY = "_mapmyprep_exam_dates_v1";
 
 /**
  * PUBLIC_INTERFACE

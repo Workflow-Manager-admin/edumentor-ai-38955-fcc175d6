@@ -21,7 +21,7 @@ function getCurrentExam() {
   );
   if (fs.existsSync(browserStorage)) {
     const d = JSON.parse(fs.readFileSync(browserStorage, 'utf-8'));
-    return d._edumentor_exam_v1 || null;
+    return d._mapmyprep_exam_v1 || null;
   }
   // Fallback/none
   return null;

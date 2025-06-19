@@ -1,6 +1,6 @@
-# Lightweight React Template for KAVIA
+# MapMyPrep
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+This project provides a minimal React template with a clean, modern UI and minimal dependencies, rebranded as **MapMyPrep**.
 
 ## Features
 

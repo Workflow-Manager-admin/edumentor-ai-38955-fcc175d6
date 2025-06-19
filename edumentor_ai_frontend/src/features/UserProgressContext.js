@@ -23,7 +23,7 @@ import React, { createContext, useState, useEffect, useCallback } from "react";
  */
 export const UserProgressContext = createContext();
 
-const STORAGE_KEY = "_edumentor_userprogress_v1";
+const STORAGE_KEY = "_mapmyprep_userprogress_v1";
 
 export function UserProgressProvider({children}) {
   const [progress, setProgress] = useState(() => {

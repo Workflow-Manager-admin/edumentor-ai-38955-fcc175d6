@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// Key for browser storage
-const STORAGE_KEY = "_edumentor_exam_v1";
+ // Key for browser storage
+const STORAGE_KEY = "_mapmyprep_exam_v1";
 
 /**
  * PUBLIC_INTERFACE
@@ -45,7 +45,7 @@ export function useExam() {
 /** Utility to retrieve currently selected exam (for non-component/utility use) */
 export function getCurrentExamFromStorage() {
   try {
-    const saved = window.localStorage.getItem("_edumentor_exam_v1");
+    const saved = window.localStorage.getItem("_mapmyprep_exam_v1");
     return saved ? JSON.parse(saved) : null;
   } catch {
     return null;

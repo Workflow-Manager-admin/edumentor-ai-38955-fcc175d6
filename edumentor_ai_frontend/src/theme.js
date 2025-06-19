@@ -1,5 +1,5 @@
 //
-// Theme color definitions for EduMentor AI (light dashboard style)
+// Theme color definitions for MapMyPrep (light dashboard style)
 //
 
 export const colors = {

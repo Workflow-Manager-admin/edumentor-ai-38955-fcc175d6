@@ -107,7 +107,7 @@ export default function ExamSelectionModal() {
             textAlign: "center"
           }}
         >
-          Welcome to EduMentor AI
+          Welcome to MapMyPrep
         </h2>
         <div
           style={{

@@ -9,7 +9,7 @@ function DashboardLayout({ user, nav, selected, onSelect, children }) {
   return (
     <div className="dashboard-app">
       <aside className="dashboard-sidenav">
-        <div className="sidenav-logo">EduMentor AI</div>
+        <div className="sidenav-logo">MapMyPrep</div>
         <ul className="sidenav-nav">
           {nav.map((item) => (
             <li key={item.key}>
@@ -31,7 +31,7 @@ function DashboardLayout({ user, nav, selected, onSelect, children }) {
           ))}
         </ul>
         <div className="sidenav-bottom">
-          <span>2024 &copy; EduMentor AI</span>
+          <span>2024 &copy; MapMyPrep</span>
         </div>
       </aside>
       <main className="dashboard-main">

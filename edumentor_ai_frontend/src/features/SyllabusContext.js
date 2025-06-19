@@ -71,7 +71,7 @@ export function SyllabusProvider({ children }) {
   const [syllabus, setSyllabus] = useState(() => {
     // Only import from localStorage; no static/hardcoded/demo
     try {
-      const d = window.localStorage.getItem("_edumentor_syllabus_v1");
+      const d = window.localStorage.getItem("_mapmyprep_syllabus_v1");
       return d ? JSON.parse(d) : [];
     } catch {
       return [];
@@ -95,7 +95,7 @@ export function SyllabusProvider({ children }) {
 
   // Persist syllabus and update progress stats
   useEffect(() => {
-    window.localStorage.setItem("_edumentor_syllabus_v1", JSON.stringify(syllabus));
+    window.localStorage.setItem("_mapmyprep_syllabus_v1", JSON.stringify(syllabus));
     if (updateSyllabusStats) {
       const all = flattenSyllabus(syllabus);
       const totalTopics = all.length;
@@ -165,7 +165,7 @@ export function SyllabusProvider({ children }) {
   // Remove syllabus and clear localStorage
   function resetSyllabus() {
     setSyllabus([]);
-    window.localStorage.removeItem("_edumentor_syllabus_v1");
+    window.localStorage.removeItem("_mapmyprep_syllabus_v1");
   }
 
   // Only path for import is user action (web-fetched syllabus supplied as JSON)

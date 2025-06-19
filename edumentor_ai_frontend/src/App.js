@@ -21,7 +21,7 @@ import "./dashboard.css";
 
 /**
  * PUBLIC_INTERFACE
- * Main application container for EduMentor AI dashboard.
+ * Main application container for MapMyPrep dashboard.
  */
 
 // Wraps children to block access if exam not selected or preparation dates not set

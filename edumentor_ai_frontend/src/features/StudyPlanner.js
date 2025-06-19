@@ -92,7 +92,7 @@ function addPlanFields(tree, startDate = null, planDays = 90, depth = 0, idPath 
 }
 
 function getStorageKey(exam) {
-  return exam ? `_edumentor_studyplan_${exam.toLowerCase()}_v1` : `_edumentor_studyplan_DEFAULT_v1`;
+  return exam ? `_mapmyprep_studyplan_${exam.toLowerCase()}_v1` : `_mapmyprep_studyplan_DEFAULT_v1`;
 }
 
 export function StudyPlanner({ planDays = 90 }) {

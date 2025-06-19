@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// Must match modal's storage key
-const DATES_STORAGE_KEY = "_edumentor_exam_dates_v1";
+ // Must match modal's storage key
+const DATES_STORAGE_KEY = "_mapmyprep_exam_dates_v1";
 
 /**
  * PUBLIC_INTERFACE
