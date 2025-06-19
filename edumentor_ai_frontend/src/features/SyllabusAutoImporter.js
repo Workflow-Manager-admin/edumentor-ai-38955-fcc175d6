@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useExam } from "./ExamContext";
 import { useExamPrepDates } from "./ExamPrepDatesContext";
 import { SyllabusContext, fetchSyllabusFromWeb } from "./SyllabusContext";
@@ -19,6 +19,29 @@ export default function SyllabusAutoImporter() {
 
   // Whether syllabus can be (re)fetched
   const canFetch = !!exam && !!startDate && !!examDate;
+
+  // On mount or when exam/startDate/examDate change, if all set, auto-fetch syllabus
+  useEffect(() => {
+    let done = false;
+    if (!canFetch) return;
+    setLoading(true);
+    setError("");
+    setSyllabus([]); // Clear before refetch for UI
+    fetchSyllabusFromWeb(exam)
+      .then(data => {
+        if (!done) setSyllabus(data);
+      })
+      .catch(e => {
+        if (!done) setError(e.message);
+      })
+      .finally(() => {
+        if (!done) setLoading(false);
+      });
+    return () => {
+      done = true;
+    };
+    // eslint-disable-next-line
+  }, [exam, startDate, examDate]);
 
   async function fetchSyllabusHandler() {
     setError("");
@@ -118,8 +141,9 @@ export default function SyllabusAutoImporter() {
     <div className="card" style={{ maxWidth: 540, marginBottom: 15 }}>
       <h2 className="card-title">Auto Fetch Official Syllabus</h2>
       <div style={{ color: "var(--muted)", marginBottom: 8, fontSize: "0.97em" }}>
-        One-click: get the latest official syllabus for <b>{exam || "selected exam"}</b>.
-        Expanding a subject or topic shows its subtopics.
+        The official syllabus for <b>{exam || "selected exam"}</b> is retrieved automatically and shown below
+        once you've set your preparation and exam dates.
+        You can expand/collapse subjects and topics for a preview.
       </div>
       <div style={{ marginBottom: 10 }}>
         <button
@@ -128,7 +152,7 @@ export default function SyllabusAutoImporter() {
           disabled={!canFetch || loading}
           style={{ background: "var(--secondary)", minWidth: 120 }}
         >
-          {loading ? "Fetching..." : "Fetch Syllabus"}
+          {loading ? "Fetching..." : "Refetch Syllabus"}
         </button>
         {syllabus.length > 0 && (
           <button
@@ -141,6 +165,9 @@ export default function SyllabusAutoImporter() {
         )}
       </div>
       {error && <div style={{ color: "#FF3742", fontWeight: 500, marginBottom: 6 }}>{error}</div>}
+      {loading && (
+        <div style={{ color: "var(--secondary)", fontWeight: 500, marginBottom: 6 }}>Loading syllabus&hellip;</div>
+      )}
       {syllabus.length > 0 && (
         <div
           style={{
