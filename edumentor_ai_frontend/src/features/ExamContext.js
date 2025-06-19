@@ -41,3 +41,13 @@ export function ExamProvider({ children }) {
 export function useExam() {
   return useContext(ExamContext);
 }
+
+/** Utility to retrieve currently selected exam (for non-component/utility use) */
+export function getCurrentExamFromStorage() {
+  try {
+    const saved = window.localStorage.getItem("_edumentor_exam_v1");
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    return null;
+  }
+}
